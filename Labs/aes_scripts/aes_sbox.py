@@ -119,7 +119,7 @@ def aes_sbox(input_data, encrypt):
 
 		result = original_sbox[np.array(input_data)]
 
-	if np.shape(input_data)[0] == 1:
-		return result
+	# if np.shape(input_data)[0] == 1:
+		# return result
 		# result = np.transpose(result)
 	return result

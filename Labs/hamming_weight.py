@@ -22,6 +22,8 @@ def hamming_weight2(_input):
 def hamming_weight(_input):
 	# function [ hw ] = hamming_weight( input )
 	# %HAMMING_WEIGHT Hamming weight for rows of an input of any size
+	if np.shape(_input).__len__() == 0:
+		return bin(_input).count("1")
 	if np.shape(_input).__len__() > 2:
 		dim = 1
 		for n in np.shape(_input):
