@@ -1,10 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.io as sp
-import scipy.spatial.distance as dst
 from hamming_weight import hamming_weight
 from aes_scripts.aes_crypt_8bit_and_leak import aes_crypt_8bit_and_leak, aes_sbox
-import dask.array as dask
 
 #  Differential power analysis and correlation power analysis
 DPA = 0
