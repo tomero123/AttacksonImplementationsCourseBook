@@ -8,7 +8,7 @@ In the US, there is a law called ``The Freedom of Information Act'' (FOIA). This
 So, in 2007, a lawyer named Michael Ravnitzky, went ahead and asked for the table of
 contents of all the articles in the NSA journal. The NSA tried postponing his request for several years, but finally granted him what he asked, along with a censorship on some classified titles. Then, after receiving that, he simply continued asking for the other classified titles!
 
-One article that was published in the journal, named ``Tempest: A Signal Problem``,
+One article that was published in the journal, named ``Tempest: A Signal Problem'',
 tells us about something that happened in the years of World War II. In those years,
 there were some significant scientific developments, one of them being digital wireless
 communication. People were able to send messages from one side of the world to the other, using digital signals. However, the US army that actually used this way of communication was not willing to be intercepted by the enemy so in order to protect those transmissions, it had to encrypt them. 
@@ -201,11 +201,10 @@ system designer did not intend to produce. Those outputs are demonstrated in
 \end{figure}
 
 For example, we can measure the time it takes to complete an operation,
-measure electromagnetic radiation, listen to the sound of the device while an operation is being completed, measure power, etc. These are \textbf{Passive Attacks} - meaning
-we are letting the device to do his ``stuff'' while we are just listening.
+measure electromagnetic radiation, listen to the sound of the device while an operation is being completed, measure power, etc. These are \textbf{Passive Attacks} - meaning that we are letting the device to do its ``stuff'' while we are just listening.
 
 There are also \textbf{Active Attacks} - also called fault attacks which try to
-break the device in a way that it will be ``just a little bit broken''.
+break the device under test in a way that it will be ``just a little bit broken''.
 It can be done by turning it off in the middle of a calculation, changing its clock, etc. 
 As a result, we might not get the actual secret, but we will get some kind of errors that can tell us a lot about the secret. 
 
@@ -255,10 +254,10 @@ different amount of bytes we can use block cipher like CBC), and the output is a
 \end{figure}
 
 The millionaire problem~\cite{lin2005efficient} is a classic problem by Yao and
-it is an example of a protocol - this problem asks whether two millionaires can
-learn who is richer, without revealing to one another how much money they each
-have. One possible solution, they could invite a poor man, tell him in secret
-how much money each has, and the poor man will announce who is richer.  
+which introduce the question of whether two millionaires can learn who is richer, 
+without revealing to one another how much money they each have. 
+One possible solution, they could invite a poor man, tell him the secret of
+how much money each one has, and the poor man will announce who is richer.  
 
 Cryptographically Secure Algorithms and Protocols:
 \begin{itemize}
@@ -323,10 +322,10 @@ The most important thing about the threat model is the story. Once we have the s
             and when one key is stolen, - the attack has succeeded. There are
             two kinds of keys, long term, and short term.
                 \begin{itemize}
-                    \item \textbf{Long term key } - the private key that
+                    \item \textbf{Long Term Key } - the private key that
                     identifies a server. If the key is stolen, it will be possible
                     to sign malware as a software update.
-                    \item \textbf{Short term key} - a key that is generated during
+                    \item \textbf{Short Term Key} - a key that is generated during
                     a session and is initialized from the long-term key. If this key gets stolen  it is possible to decode all the messages in the current session and modify/inject them.
                 \end{itemize}
                 Notice that if the long-term key is stolen, it does not mean the short-term key is stolen.
