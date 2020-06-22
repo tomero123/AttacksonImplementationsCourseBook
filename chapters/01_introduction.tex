@@ -2,37 +2,30 @@
 
 \section{Motivation} \label{sec:Motivation} %arbel
 
-The following story is a true story about the NSA – the U.S intelligence agency
-- which has an internal and classified, cryptology journal. In the U.S there is
-a law called ``The Freedom of Information Act" (FOIA), which means that, in
-general, any person can ask access to government documents. So, on 2007, one
-person went ahead and asked for the table of contents of all the articles in the
-NSA journal, and the law is the law, so the NSA gave him what he asked, with
-censorship on some classified titles. After he got that, of course, he asked for
-the unclassified articles!
+The following story is a true story about the NSA – the US intelligence agency
+and their classified internal journal named "Cryptographic Spectrum".
+In the US, there is a law called ``The Freedom of Information Act`` (FOIA). This lawy states that in general, any person can ask for an access to government documents.
+So, in 2007, a lawyer named Michael Ravnitzky, went ahead and asked for the table of
+contents of all the articles in the NSA journal. The NSA tried postponing his request for several years, but finally granted him what he asked, along with a censorship on some classified titles. Then, after receiving that, he simply continued asking for the other classified titles!
 
-The journal, obviously, was used to be secret, but it was approved for release
-by NSA because of the FOIA law. One article that published in the journal, tells
-us about something that happened in the years of World War II. In those years,
-there were some significant developments, and one of them was digital wireless
-communication. People were able to send themselves messages from one side of the
-world to the other, using digital signals, but the military forces that used
-this communication were afraid to be wired by the enemy and to protect those
-transmissions they had to encrypt them. 
+One article that was published in the journal, named ``Tempest: A Signal Problem``,
+tells us about something that happened in the years of World War II. In those years,
+there were some significant scientific developments, one of them being digital wireless
+communication. People were able to send messages from one side of the world to the other, using digital signals. However, the US army that actually used this way of communication was not willing to be intercepted by the enemy so in order to protect those transmissions, it had to encrypt them. 
 
 At the end of the encryption process, we get a ciphertext, which can be
 transmitted without any concern. The obstacle which prevents attackers from
 decrypting the ciphertext and discover the key is the algorithm which has been
-written very well. Let's assume we have a weak computer to perform the
-encryption, because we are in the years of World War II - no resistors, no
+implemented very well. Let us assume we have a weak computer to perform the
+encryption, given that in the years of World War II there were no resistors, no
 iterative circuits – what can the adversary do to find the key?
 
-The adversaries can build a machine which does the decryption – insert the
+The adversary can build a machine which does the decryption – insert the
 ciphertext into the machine and try all the keys (brute force). But\ldots how do
-you know which key is the correct one? There is logic to the plaintext – maybe
-it's an English, a weather broadcast, an executable – and in general, it's
-something you can check the syntax, so with a very high probability, if you get
-an output that starts with ``Heil Hitler" – the key you used to decrypt the
+you know which key is the correct one? Simple, there is a logic to the plaintext.
+It could be a chat in English, a weather broadcast, even an executable – in general, it is
+something you can check the syntax for, so with a very high probability, if you get
+an output that starts with ``Heil Hitler`` –  the key you used to decrypt the
 ciphertext is the correct key. We need to remember that the encryption machine
 was not very complex in those years, and to keep the secure messages safe, they
 had to find a way to protect their ciphertexts. The solution to that issue is a
@@ -48,7 +41,7 @@ Why does this one-time pad protect from brute force attacks? Because $plaintext
 \oplus key = ciphertext$ and $ciphertext \oplus key = plaintext$, meaning we can
 take the ciphertext and any plaintext we want, XOR them together, and get the
 corresponding random key. In a very secure encryption technique, like AES-256,
-there are \(2^{256}\) possible keys and with a ciphertext which is 1 MB, we have
+there are \(2^{256}\) possible keys and with a ciphertext which is 1MB, we have
 \(2^{8000000}\) possible keys, but if we don't know the key there are
 \(2^{256}\) random plaintext, and maybe just one of them is the real one. The
 one-time pad has been proven to be completely secure by Claude Shannon, and
@@ -64,39 +57,35 @@ machine which called \textbf{AN/FGQ-1 mixer}~\cite{cryptoMix} as can be seen in
     \caption{\textbf{AN/FGQ-1 Mixer}. Two-way teletypewriter repeater and mixer equipment enclosed in a wooden Table-type cabinet.} \label{fig:Mixer}
 \end{figure}
 
-This machine is a kind of a box, and next to the box was seat a wireless
-operator with a typewriter, and the tape that came out from the typewriter was
+This machine is a kind of a box, and next to the box, was seated a wireless
+operator with a typewriter. The tape that came out from the typewriter was
 with holes that spooled into the box together with another piece of tape, which
-was the key. Inside the box were little lights that shine through the holes, and
-little punches which would punch holes in the third piece of tape – the XOR of
-the plain text and the key, and this is the output of one operation of the
-machine. Afterward, the wireless operator feeds the ciphertext into the digital
-radio to transmit.
+was the key. Inside the box there were little lights that lit through the holes, and
+little punches which would punch holes in the third piece of tape. The XOR result of
+the plain text and the key was the output of one operation of the machine. Then, the wireless operator fed the ciphertext into the digital radio to transmit.
 
-Is the machine classified? If the system is designed right - you can reveal the
+Is the machine classified? If the system is designed right - you can tell the
 adversary whatever you want except for the secret key, and the system will
 remain secure.
 
-So, these machines were used during the war, until they break down, and at the
+So, these machines were used during the war, until they broke down, and at the
 time that happened, they have been sent to the Bell Labs (which produced the
-machines). The engineers who tried to repair one of the machines sat in a room,
+machines). The engineers who tried to repair one of the machines that sat in a room,
 and on the other side of the room, there was an \textbf{Oscilloscope}. 
 
 An Oscilloscope is like babies monitor - just for signals. You connect the
 Oscilloscope to an electric circuit, and there is a line that rising every time
 there is a difference in voltage. \Cref{fig:Oscillo} demonstrates such a setup.
-This Oscilloscope was not connected to the mixer, it was just laid at the other
+This Oscilloscope was not connected to the mixer, it was just laying at the other
 side of the room, connected to some other test equipment. The engineers
-discovered that every time this mixer enter the digit into the tape, they would
-get a pulse at the Oscilloscope. When you send a current into an electric
-monitor, the current is moving through the conductor and electromagnetic current
-is being generated. The Oscilloscope has little wires, and the electromagnetic
-waves traveling through these wires. As a result, we have a transmit antenna and
+discovered that every time this mixer entered the digit into the tape, they would
+get a pulse at the Oscilloscope. This is bcause that when you send a current into an electric monitor, the current is moving through the conductor and electromagnetic current is being generated. The Oscilloscope has little wires, and the electromagnetic
+waves can travel through those wires. As a result, we have a transmit antenna and
 a receive antenna, so the Oscilloscope measures the holes (the ciphertext) in
-the tape. Another possible explanation - when the punches punch a hole in the
+the tape. Another possible explanation is that when the punches punch a hole in the
 tape, it consumes so much current that the voltage in the room drops a little,
-and then the lines in the Oscilloscope – without being connected to anything -
-just jumps.
+and then the lines in the Oscilloscope, without being connected to anything,
+just ``jump``.
 
 \begin{figure}
     \centering
@@ -109,28 +98,26 @@ The engineers discovered~\cite{NSAsecret} that the top-secret information inside
 this machine was being transmitted over the air. The process the engineers were
 supposed to do is called responsible disclosure, meaning to report a bug. Like
 good engineers, they told the Secret Service people about this bug, but they
-didn't take their diagnosis seriously. So what did they do? The Bell labs were
-located next to the U.S Secret Service office, so they set up an antenna and
+did not take their diagnosis seriously. So what did they do? The Bell labs were
+located next to the US Secret Service office, so they set up an antenna and
 they listened for an hour for radio transmissions that the Secret Service got in
-their office, and they gave the Secret Service their ``top-secrets" analyzed
+their office, and they gave the Secret Service their ``top-secrets`` analyzed
 messages.
 
-Obviously, the U.S Secret Service realized that the reported attack was not
+Obviously, the US Secret Service realized that the reported attack was not
 esoteric, and they asked for a solution from the engineers. The solution of Bell
 labs was to modify the mixers – to surround them in a wire cage which will
-swallow the radiation that coming out from the machine, to put a shield on the
+absorb the radiation coming out from the machine, to put a shield on the
 machine (to make sure the power consumption is not affecting the outside), and
 to make sure that people are not getting close to the machine more than 30
 meters. The Secret Service people decided to accept just the distance solution
 and not the filtering/shielding/isolation solutions, because of the high
-expenses and time that will cost to modify all the machine during wartime.
+expenses and time that would cost to modify all the machines during wartime.
 
-In 1954, the Russians published a tender to build military phones. They were
-very strict about protecting the phones by shielding them and making sure they
-don't generate too much radiation. In parallel, they were publishing tenders for
-things like engines, turbines, etc. and they didn't were so strict for that
-tenders. This is an evidence to that in those years, the Russians know about the
-``bug". In conclusion, a one-time pad is the most secure cipher known, but from
+In 1954, the Soviet Union published a tender to build military phones. They were
+very specific about protecting the phones by shielding them and making sure they
+do not generate too much radiation. In addition, they were also publishing strict tenders for other things like engines, turbines, etc. In fact, this is an evidence that in those years, the Soviet Union actually knew about the ``bug``in the machine.
+In conclusion, a one-time pad is the most secure cipher known, but from
 the story above, we can see it was broken. So, what was broken? \textbf{The
 implementation}.
 
@@ -149,7 +136,7 @@ implementation:
     very cheap and you pay for the games. Attackers, obviously, want to crack
     the Xbox – to play games for free, to watch movies on the device or to run
     Linux. In Xbox there are some integrity checks, and one of the checks was
-    done by a command called ``memory compare"~\cite{memcmp}, so you would
+    done by a command called ``memory compare``~\cite{memcmp}, so you would
     calculate the integrity check over whatever software it supposes to run and
     you would have it stored in the secure memory, and then you would try to
     compare using these 2 values. This command leaks the length of the number of
@@ -157,8 +144,8 @@ implementation:
     and the first bit is different – the response will be fast, and if the
     blocks identical until the very last bit – it would take a longer. This is
     one of the things that was enough to break the machine. 
-    \item \textbf{Oyster Card}: it's a computer without power supply and Inside
-    this computer that are stored values. Attackers could attack this card to
+    \item \textbf{Oyster Card}: it is a computer without power supply and inside
+    this computer there are stored values. Attackers could attack this card to
     take the train for free. There are a lot of ways to attack the implantation
     of that card~\cite{garcia2008dismantling, courtois2008algebraic}.
     \item \textbf{Car Keys}~: Car hacking has become more commonplace in recent years, due to the increased integration with electronic systems that include the car’s own lock system.
@@ -176,10 +163,7 @@ implementation:
 \end{itemize}
 
 When we implement an algorithm without being careful, we can be exposed to
-implementation attacks. To protects against these attacks, we must protect the
-implementation and do countermeasures, but as we saw at World War II, those
-countermeasures have a price, thus making the system more expensive, and they
-make the system heavier.
+implementation attacks. To protect ourselves against those attacks, we must protect the implementation, but as we saw at World War II, this countermeasure has a price. It makes the system more expensive, and heavier.
 
 \section{System Implementation} \label{sec:SystemImpl}
 
