@@ -2,7 +2,7 @@
 
 \section{Motivation} \label{sec:Motivation} %arbel
 
-The following story is a true story about the NSA – the US intelligence agency
+The following story is a true story about the NSA - the US intelligence agency
 and their classified internal journal named "Cryptographic Spectrum".
 In the US, there is a law called ``The Freedom of Information Act`` (FOIA). This lawy states that in general, any person can ask for an access to government documents.
 So, in 2007, a lawyer named Michael Ravnitzky, went ahead and asked for the table of
@@ -18,14 +18,14 @@ transmitted without any concern. The obstacle which prevents attackers from
 decrypting the ciphertext and discover the key is the algorithm which has been
 implemented very well. Let us assume we have a weak computer to perform the
 encryption, given that in the years of World War II there were no resistors, no
-iterative circuits – what can the adversary do to find the key?
+iterative circuits - what can the adversary do to find the key?
 
-The adversary can build a machine which does the decryption – insert the
+The adversary can build a machine which does the decryption - insert the
 ciphertext into the machine and try all the keys (brute force). But\ldots how do
 you know which key is the correct one? Simple, there is a logic to the plaintext.
-It could be a chat in English, a weather broadcast, even an executable – in general, it is
+It could be a chat in English, a weather broadcast, even an executable - in general, it is
 something you can check the syntax for, so with a very high probability, if you get
-an output that starts with ``Heil Hitler`` –  the key you used to decrypt the
+an output that starts with ``Heil Hitler`` -  the key you used to decrypt the
 ciphertext is the correct key. We need to remember that the encryption machine
 was not very complex in those years, and to keep the secure messages safe, they
 had to find a way to protect their ciphertexts. The solution to that issue is a
@@ -33,7 +33,7 @@ one-time pad.
 
 One-time pad, also called Vernam Cipher, is a simple and powerful encryption
 system. The idea behind this technique is that the length of the key is the same
-length as the plain text, and to encrypt you just add them together – if we use
+length as the plain text, and to encrypt you just add them together - if we use
 digital bits we use XOR, and if we use letters we define an addition operation.
 It's called a one-time pad because you can use your pre-shared key only once.
 
@@ -106,7 +106,7 @@ messages.
 
 Obviously, the US Secret Service realized that the reported attack was not
 esoteric, and they asked for a solution from the engineers. The solution of Bell
-labs was to modify the mixers – to surround them in a wire cage which will
+labs was to modify the mixers - to surround them in a wire cage which will
 absorb the radiation coming out from the machine, to put a shield on the
 machine (to make sure the power consumption is not affecting the outside), and
 to make sure that people are not getting close to the machine more than 30
@@ -134,15 +134,15 @@ implementation:
 \begin{itemize}
     \item \textbf{Xbox 360}: Xbox is a PC that plays nothing but games, it is
     very cheap and you pay for the games. Attackers, obviously, want to crack
-    the Xbox – to play games for free, to watch movies on the device or to run
+    the Xbox - to play games for free, to watch movies on the device or to run
     Linux. In Xbox there are some integrity checks, and one of the checks was
     done by a command called ``memory compare``~\cite{memcmp}, so you would
     calculate the integrity check over whatever software it supposes to run and
     you would have it stored in the secure memory, and then you would try to
     compare using these 2 values. This command leaks the length of the number of
     correct bytes before the first incorrect byte, so if you compare 2 blocks
-    and the first bit is different – the response will be fast, and if the
-    blocks identical until the very last bit – it would take a longer. This is
+    and the first bit is different - the response will be fast, and if the
+    blocks identical until the very last bit - it would take a longer. This is
     one of the things that was enough to break the machine. 
     \item \textbf{Oyster Card}: it is a computer without power supply and inside
     this computer there are stored values. Attackers could attack this card to
@@ -153,12 +153,12 @@ implementation:
     These signals can in turn be intercepted and used to break into the car and even start it.
     One such technique is called SARA or Signal Amplification Relay Attack. \cite{relayAttack}
     \item \textbf{FPGA}~\cite{fpga}: a piece of hardware which is a very
-    versatile, meaning we can find it many kinds of hardware – routers, audio
+    versatile, meaning we can find it many kinds of hardware - routers, audio
     equipment, spaceships, etc. the FPGA has a firmware installed inside, and if
     you want to copy some designs you need to find the firmware. The firmware is
     encrypted, but a bunch of Germans researches
     discovered~\cite{moradi2011vulnerability} that if you measure the power
-    consumption of the FPGA while it is encrypting the firmware – you can find
+    consumption of the FPGA while it is encrypting the firmware - you can find
     out what is the key.
 \end{itemize}
 
@@ -169,7 +169,7 @@ implementation attacks. To protect ourselves against those attacks, we must prot
 
 The simplest form of a computational system is a device which gets input, makes
 a computation and finally produces an output as can be seen in
-\Cref{fig:SecDev1}. We assume that our system contains a secret, which cannot be
+\Cref{fig:SecDev1}. We assume that our system contains a secret, which is not
 revealed to anyone before, during and after the computation process. 
 
 \begin{figure}[!ht]
@@ -178,18 +178,18 @@ revealed to anyone before, during and after the computation process.
     \caption{\textbf{Simplest Model}. The device make a computation using the secret and the input, and outputs the result.} \label{fig:SecDev1}
 \end{figure}
 
-But, if that all what the ``system" has, it is not a system, it is just an
-Algorithm. What turns an algorithm to be a system? It's implementation.
+But, if that all what the ``system`` has, it is not a system, it is just an
+algorithm. What turns an algorithm to be a system? It is the implementation!
 
-Think about ATM – very simple device without cryptography. The input is our
-credit card and a 4-digits PIN code, the output is money. If we don't know the
+Think about ATM - very simple device without cryptography. The input is our
+credit card and a 4-digits PIN code, the output is money. If we do not know the
 PIN code we can go over the all possible combinations of 4-digits code (brute
 force), and finally find the correct PIN. Unfortunately, we have a limit of 3
 trials until the card is being shredded. What an attacker can do?
 
 As an output, and besides the money, we have also some additional outputs which
 have been produced by the implementation of the physical system. Those
-additional outputs are called ``Side Channels" and they are outputs which the
+additional outputs are called ``Side Channels`` and they are in fact outputs that the
 system designer did not intend to produce. Those outputs are demonstrated in
 \Cref{fig:SecDev2}
 
@@ -200,17 +200,14 @@ system designer did not intend to produce. Those outputs are demonstrated in
     \label{fig:SecDev2}
 \end{figure}
 
-For example, we can measure the time it takes to fulfill the operation,
-electromagnetic radiation, the sound of the device while the operation is being
-fulfilled, power measurements, etc. These are \textbf{Passive Attacks} – meaning
-we are letting the device to do his stuff while we just listening.
+For example, we can measure the time it takes to complete an operation,
+measure electromagnetic radiation, listen to the sound of the device while an operation is being completed, measure power, etc. These are \textbf{Passive Attacks} - meaning
+we are letting the device to do his ``stuff`` while we are just listening.
 
-There are also \textbf{Active Attacks} – called also fault attacks -  try to
-break the device in a way that it will be ``just a little broken" – ruin the
-device's activity in some way. It can be by turn it off in the middle of
-calculation, change his clock, etc. As a result, we will maybe not get the
-actual secret, but we will get some kind of errors that can teach us a lot about
-the secret. 
+There are also \textbf{Active Attacks} - also called fault attacks which try to
+break the device in a way that it will be ``just a little bit broken`.
+It can be done by turning it off in the middle of a calculation, changing its clock, etc. 
+As a result, we might not get the actual secret, but we will get some kind of errors that can tell us a lot about the secret. 
 
 \begin{figure}[!ht]
     \centering
@@ -222,25 +219,24 @@ the secret.
 \section{Security of a System} \label{sec:SystemSecurity}
 
 When we can say that a system is secured? Usually, we define a system as a
-``secured system" if the system maintains three aspects of information security,
+``secured system`` if the system maintains three aspects of information security,
 known as the CIA~\cite{cia} triad:
 
 \begin{itemize}
     \item \textbf{Confidentiality} - when you are interacting with a system, you
     only get what you wanted to get. For instance, when I check my test grade,
-    I'll get my grade and not my friend's grade. A possible attack could be data
-    leakage.
+    I will get my grade and not my friend's grade. If I eavesdropped a conversation for example, it will no longer be confidential.
     \item \textbf{Integrity} - all the data in the system is correct. A possible
     attack could be that one side of the communication will accept a message
-    they are not supposed to accept.
-    \item \textbf{Availability} - the system must work (in a reasonable time). A
+    they are not supposed to accept. If I managed to manipulate a bank withdrawal, or jailbreak a device, its integrity would be compromised.
+    \item \textbf{Availability} - the system must work in a reasonable time. A
     possible attack could be a Denial of Service (DOS).
 \end{itemize}
 
 In \Cref{fig:CIA} the relation between those aspects is demonstrated as the
 Triangle of Information Security.
 
-We don't have to use cryptography to secure our system. For example, if someone
+We do not have to use cryptography to secure our system. For example, if someone
 goes to some event without invitation, there is a security to prevent him from
 getting in.
 
@@ -259,7 +255,7 @@ different amount of bytes we can use block cipher like CBC), and the output is a
 \end{figure}
 
 The millionaire problem~\cite{lin2005efficient} is a classic problem by Yao and
-it is an example of a protocol – this problem asks whether two millionaires can
+it is an example of a protocol - this problem asks whether two millionaires can
 learn who is richer, without revealing to one another how much money they each
 have. One possible solution, they could invite a poor man, tell him in secret
 how much money each has, and the poor man will announce who is richer.  
@@ -268,42 +264,41 @@ Cryptographically Secure Algorithms and Protocols:
 \begin{itemize}
     \item \textbf{Encryption and Decryption} - Public key-RSA, Symmetric key-AES
     \item \textbf{Signing and verification} - must be an asymmetric key. There
-    are 2 parties – signing party and verifying party (who gets the public key).
+    are 2 parties - signing party and verifying party, who gets the public key.
     The difference between signing and decryption is when one side sends a
     signed message it comes with a signature, and when one side decrypts a
-    message he is sending only the ciphertext.
+    message it is sending only the ciphertext.
     \item \textbf{Key Exchange} - Diffie Hellman algorithm.
     \item \textbf{Hashing and HMACs} - a hash is a function that gets a long
-    input (the length doesn't matter) and outputs a fixed size output. A hash
-    function is secure when it's hard to find collisions, e.g. 2 messages with
-    the same hash. HMAC is a hash with a key – when you change the key, the hash
-    is changed.
-    \item \textbf{Multiparty Computation}
-    \item \textbf{Cryptocurrency}
+    input (of arbitrary length) and outputs a fixed size output. A hash
+    function is secure when it is difficult to find collisions in it, i.e 2 messages with
+    the same hash. HMAC is a hash with a key - when you change the key, the hash
+    is also changed.
+    \item \textbf{Multiparty Computation} - secure protocols for auctions, votings, etc.
+    \item \textbf{Cryptocurrency} - Bitcoin for example.
 \end{itemize}
 
 Secure Architectures without cryptography:
 \begin{itemize}
-    \item \textbf{Secure Policies} - like access control to a military base, for
-    instance.
+    \item \textbf{Secure Policies} - like access control to a military base, for  instance.
     \item \textbf{User Separation and Sandboxing} - a program is divided into
-    parts which are limited to the specific privileges they require to perform a
+    parts which are limited to the specific privileges they require in order to perform a
     specific task.
-    \item \textbf{Virtual Memory} - application has a view of the memory, and we
+    \item \textbf{Virtual Memory} - an application has a view of the memory, and we
     can take to pointer and point to some parts of the memory. We will get our
-    old memory (which I'm allowed) or the app will crash due to access to
-    invalid memory space. In theory, we can't get another user memory.
+    old memory (which we are allowed) or the app will crash due to access to
+    invalid memory space. In theory, we cannot get another user's memory.
 \end{itemize}
 
 \section{Constructing and Using a Threat Model} \label{sec:BreakImpl}
 
 What is the main advantage we have as attackers which allowed us to break
 implementations that are secure in theory? The main advantage is that we have
-more inputs and outputs – side channels, leakage – and together it means that we
+more inputs and outputs - side channels, leakage - and together it means that we
 can break a completely secure algorithm. But when is an algorithm's
 implementation secure? CIA triad still holds, but the thing that missing here is
 the \textbf{story}, i.e. what are we allowing the adversary to do with my system
-– the more power we give the adversary the attack becomes less impressive. 
+- the more power we give the adversary the attack becomes less impressive. 
 
 Let's have a look at a little system where the assumptions were broken:
 
@@ -315,7 +310,7 @@ Let's have a look at a little system where the assumptions were broken:
 \end{figure}
 
 \Cref{fig:Bank} presents a wall of a bank in Ireland, which an ATM was
-constructed on it. As we know, the ATMs are very secure systems – they have
+constructed on it. As we know, the ATMs are very secure systems - they have
 encryption, they check our ID very carefully and if we make any mistake they
 shred the card. What happened is that the ATM was stolen from the wall of a bank
 by thieves which took a digger and smashed through the wall, put the ATM on
@@ -333,7 +328,7 @@ story. We divide them as follows:
     \item \textbf{Victim Assets} - what the victim have that I want to steel? 
         \begin{itemize}
             \item \textbf{Cryptographic secretes (keys)} -  the keys are short,
-            and when one steals the key – the attack has succeeded. There are
+            and when one steals the key - the attack has succeeded. There are
             two kinds of keys, long term, and short term.
                 \begin{itemize}
                     \item \textbf{Long term key } - the private key that
@@ -355,7 +350,7 @@ story. We divide them as follows:
     \item \textbf{Attacker Capabilities} - what can the attacker do?
         \begin{itemize}
             \item \textbf{Off-path} - the attacker sitting somewhere in the
-            world – can't observe or communicate with you, but he can attack you
+            world - can't observe or communicate with you, but he can attack you
             somehow. 
             \item \textbf{Passive Man in the Middle} - attacker who can see the
             victim communication with the server, for example, but he cannot
@@ -367,8 +362,8 @@ story. We divide them as follows:
             in the system.
         \end{itemize}
         An important thing we need to consider when we are talking about
-        attacker capabilities is the other defenses we must protect our system –
-        guard or camera, for example. Another thing is the scale of the attack –
+        attacker capabilities is the other defenses we must protect our system -
+        guard or camera, for example. Another thing is the scale of the attack -
         how many systems can we attack at once. If the attack is physical,
         probably just one system. If the attacker attacks from an android app,
         maybe he can attack all the phones in the world.
