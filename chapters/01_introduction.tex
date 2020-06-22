@@ -4,7 +4,7 @@
 
 The following story is a true story about the NSA - the US intelligence agency
 and their classified internal journal named "Cryptographic Spectrum".
-In the US, there is a law called ``The Freedom of Information Act`` (FOIA). This lawy states that in general, any person can ask for an access to government documents.
+In the US, there is a law called ``The Freedom of Information Act'' (FOIA). This lawy states that in general, any person can ask for an access to government documents.
 So, in 2007, a lawyer named Michael Ravnitzky, went ahead and asked for the table of
 contents of all the articles in the NSA journal. The NSA tried postponing his request for several years, but finally granted him what he asked, along with a censorship on some classified titles. Then, after receiving that, he simply continued asking for the other classified titles!
 
@@ -25,7 +25,7 @@ ciphertext into the machine and try all the keys (brute force). But\ldots how do
 you know which key is the correct one? Simple, there is a logic to the plaintext.
 It could be a chat in English, a weather broadcast, even an executable - in general, it is
 something you can check the syntax for, so with a very high probability, if you get
-an output that starts with ``Heil Hitler`` -  the key you used to decrypt the
+an output that starts with ``Heil Hitler'' -  the key you used to decrypt the
 ciphertext is the correct key. We need to remember that the encryption machine
 was not very complex in those years, and to keep the secure messages safe, they
 had to find a way to protect their ciphertexts. The solution to that issue is a
@@ -85,7 +85,7 @@ a receive antenna, so the Oscilloscope measures the holes (the ciphertext) in
 the tape. Another possible explanation is that when the punches punch a hole in the
 tape, it consumes so much current that the voltage in the room drops a little,
 and then the lines in the Oscilloscope, without being connected to anything,
-just ``jump``.
+just ``jump''.
 
 \begin{figure}
     \centering
@@ -101,7 +101,7 @@ good engineers, they told the Secret Service people about this bug, but they
 did not take their diagnosis seriously. So what did they do? The Bell labs were
 located next to the US Secret Service office, so they set up an antenna and
 they listened for an hour for radio transmissions that the Secret Service got in
-their office, and they gave the Secret Service their ``top-secrets`` analyzed
+their office, and they gave the Secret Service their ``top-secrets'' analyzed
 messages.
 
 Obviously, the US Secret Service realized that the reported attack was not
@@ -116,7 +116,7 @@ expenses and time that would cost to modify all the machines during wartime.
 
 In 1954, the Soviet Union published a tender to build military phones. They were
 very specific about protecting the phones by shielding them and making sure they
-do not generate too much radiation. In addition, they were also publishing strict tenders for other things like engines, turbines, etc. In fact, this is an evidence that in those years, the Soviet Union actually knew about the ``bug``in the machine.
+do not generate too much radiation. In addition, they were also publishing strict tenders for other things like engines, turbines, etc. In fact, this is an evidence that in those years, the Soviet Union actually knew about the ``bug'' in the machine.
 In conclusion, a one-time pad is the most secure cipher known, but from
 the story above, we can see it was broken. So, what was broken? \textbf{The
 implementation}.
@@ -136,7 +136,7 @@ implementation:
     very cheap and you pay for the games. Attackers, obviously, want to crack
     the Xbox - to play games for free, to watch movies on the device or to run
     Linux. In Xbox there are some integrity checks, and one of the checks was
-    done by a command called ``memory compare``~\cite{memcmp}, so you would
+    done by a command called ``memory compare'' ~\cite{memcmp}, so you would
     calculate the integrity check over whatever software it supposes to run and
     you would have it stored in the secure memory, and then you would try to
     compare using these 2 values. This command leaks the length of the number of
@@ -178,7 +178,7 @@ revealed to anyone before, during and after the computation process.
     \caption{\textbf{Simplest Model}. The device make a computation using the secret and the input, and outputs the result.} \label{fig:SecDev1}
 \end{figure}
 
-But, if that all what the ``system`` has, it is not a system, it is just an
+But, if that all what the ``system'' has, it is not a system, it is just an
 algorithm. What turns an algorithm to be a system? It is the implementation!
 
 Think about ATM - very simple device without cryptography. The input is our
@@ -189,7 +189,7 @@ trials until the card is being shredded. What an attacker can do?
 
 As an output, and besides the money, we have also some additional outputs which
 have been produced by the implementation of the physical system. Those
-additional outputs are called ``Side Channels`` and they are in fact outputs that the
+additional outputs are called ``Side Channels'' and they are in fact outputs that the
 system designer did not intend to produce. Those outputs are demonstrated in
 \Cref{fig:SecDev2}
 
@@ -202,10 +202,10 @@ system designer did not intend to produce. Those outputs are demonstrated in
 
 For example, we can measure the time it takes to complete an operation,
 measure electromagnetic radiation, listen to the sound of the device while an operation is being completed, measure power, etc. These are \textbf{Passive Attacks} - meaning
-we are letting the device to do his ``stuff`` while we are just listening.
+we are letting the device to do his ``stuff'' while we are just listening.
 
 There are also \textbf{Active Attacks} - also called fault attacks which try to
-break the device in a way that it will be ``just a little bit broken`.
+break the device in a way that it will be ``just a little bit broken''.
 It can be done by turning it off in the middle of a calculation, changing its clock, etc. 
 As a result, we might not get the actual secret, but we will get some kind of errors that can tell us a lot about the secret. 
 
@@ -219,7 +219,7 @@ As a result, we might not get the actual secret, but we will get some kind of er
 \section{Security of a System} \label{sec:SystemSecurity}
 
 When we can say that a system is secured? Usually, we define a system as a
-``secured system`` if the system maintains three aspects of information security,
+``secured system'' if the system maintains three aspects of information security,
 known as the CIA~\cite{cia} triad:
 
 \begin{itemize}
