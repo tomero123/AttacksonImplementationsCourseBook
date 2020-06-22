@@ -292,15 +292,13 @@ Secure Architectures without cryptography:
 
 \section{Constructing and Using a Threat Model} \label{sec:BreakImpl}
 
-What is the main advantage we have as attackers which allowed us to break
-implementations that are secure in theory? The main advantage is that we have
-more inputs and outputs - side channels, leakage - and together it means that we
-can break a completely secure algorithm. But when is an algorithm's
-implementation secure? CIA triad still holds, but the thing that missing here is
-the \textbf{story}, i.e. what are we allowing the adversary to do with my system
-- the more power we give the adversary the attack becomes less impressive. 
+What is the main advantage we have as attackers which allows us to break
+implementations that are secure in theory? 
+The main advantage is that we have more inputs and outputs which translates into side channels and leakage, so together it means that we can break a completely secure algorithm. 
+But when is an algorithm's implementation secure? CIA triad holds, but the thing that is missing here is the \textbf{story}, i.e. what are we allowing the attacker to do with the system?
+The more power we give the attacker, the less impressive the attack becomes. 
 
-Let's have a look at a little system where the assumptions were broken:
+Let us have a look at a little system where the assumptions were broken:
 
 \begin{figure}[!ht]
     \centering
@@ -309,52 +307,42 @@ Let's have a look at a little system where the assumptions were broken:
     \label{fig:Bank}
 \end{figure}
 
-\Cref{fig:Bank} presents a wall of a bank in Ireland, which an ATM was
-constructed on it. As we know, the ATMs are very secure systems - they have
+\Cref{fig:Bank} presents a wall of a bank in Ireland, on which an ATM was
+constructed. As we know, the ATMs are very secure systems - they have
 encryption, they check our ID very carefully and if we make any mistake they
-shred the card. What happened is that the ATM was stolen from the wall of a bank
-by thieves which took a digger and smashed through the wall, put the ATM on
-their track, and laid the digger across the road to prevent the police from
-chasing them. We can learn from this story, that the ATM was secure, but their
-threat model was wrong.
+shred the card. What just happened, is that the ATM was stolen from the wall of a bank
+by thieves which took a vehicle and smashed it through the wall. They then loaded the ATM on their track, and left the vehicle to prevent the police from chasing them. 
+We can learn from this story, that although the ATM was secure, the threat model was wrong.
 
-The most important thing about the threat model is the story. If the story is a
-thief which comes to the bank in the middle of the night with a digger it's one
-story, and if a thief comes in the middle of the day by foot, it's a different
-story. Once we have the story, we can detail what are the properties of the
-story. We divide them as follows:
+The most important thing about the threat model is the story. Once we have the story, we can find out what are the different properties. We specify them as follows:
 
 \begin{itemize}
-    \item \textbf{Victim Assets} - what the victim have that I want to steel? 
+    \item \textbf{Victim Assets} - what does the victim have that I can steal? 
         \begin{itemize}
             \item \textbf{Cryptographic secretes (keys)} -  the keys are short,
-            and when one steals the key - the attack has succeeded. There are
+            and when one key is stolen, - the attack has succeeded. There are
             two kinds of keys, long term, and short term.
                 \begin{itemize}
                     \item \textbf{Long term key } - the private key that
-                    identifies a server. If one steals this key, he will be able
+                    identifies a server. If the key is stolen, it will be possible
                     to sign malware as a software update.
-                    \item \textbf{Short term key} - a key that generated during
-                    a session start from the long-term key. If one steals this
-                    key, he can decode all the messages in the current session
-                    and modify/inject them.
+                    \item \textbf{Short term key} - a key that is generated during
+                    a session and is initialized from the long-term key. If this key gets stolen  it is possible to decode all the messages in the current session and modify/inject them.
                 \end{itemize}
-                Notice that if one steals the long-term key it doesn't mean he
-                can steal the short-term key.
+                Notice that if the long-term key is stolen, it does not mean the short-term key is stolen.
             \item \textbf{State secrets} - for example, ASLR or configuration of
-            a system. If one can find out the addresses of functions in the
+            a system. If someone can find out the addresses of functions in the
             memory of a victim, he can write exploits. 
             \item \textbf{Human secrets} - things which the users do not want to
-            expose like passwords, medical condition, etc.
+            reveal like passwords, medical condition, etc.
         \end{itemize}
     \item \textbf{Attacker Capabilities} - what can the attacker do?
         \begin{itemize}
-            \item \textbf{Off-path} - the attacker sitting somewhere in the
-            world - can't observe or communicate with you, but he can attack you
+            \item \textbf{Off-path} - the attacker is sitting somewhere in the
+            world - cannot observe or communicate with you, but he can attack you
             somehow. 
             \item \textbf{Passive Man in the Middle} - attacker who can see the
-            victim communication with the server, for example, but he cannot
-            communicate with the victim directly.
+            victim communication with the server, but cannot communicate with the victim directly.
             \item \textbf{Active Man in the Middle} - an attacker who can
             interact with the server and can do replay attacks.
             \item \textbf{Physical Access} - an attacker who has physical access
@@ -362,11 +350,8 @@ story. We divide them as follows:
             in the system.
         \end{itemize}
         An important thing we need to consider when we are talking about
-        attacker capabilities is the other defenses we must protect our system -
-        guard or camera, for example. Another thing is the scale of the attack -
-        how many systems can we attack at once. If the attack is physical,
-        probably just one system. If the attacker attacks from an android app,
-        maybe he can attack all the phones in the world.
+        attacker capabilities is the other defenses we must protect our system with, like
+ guards or cameras. Another thing is the scale of the attack, meaning how many systems we can attack at once. If the attack is physical, it is probably just one system. If the attacker attacks from an android application, he might attack all the phones in the world.
     \item \textbf{Attacker Objectives} - who are the attackers? What do they
     want?
         \begin{itemize}
@@ -382,8 +367,8 @@ story. We divide them as follows:
         \end{itemize}
 \end{itemize}
 
-Of course, the more limits we put on the attacker, the attack gets more and more
-impressive.
+Of course, the more limits we put on the attacker, the more and more
+impressive the attack becomes.
 
 \section{Related Work} \label{sec:RelatedWork}
 The whole topic of Attacks on implimitation has been widly reaserched,
