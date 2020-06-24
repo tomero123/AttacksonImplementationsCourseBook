@@ -594,26 +594,19 @@ from the git repository~\cite{GitClementine}. It is based on the Flush+Reload
 cache attack that we mentioned in \cref{subsec:flushreload} presented
 in~\cite{Yarom2014} and~\cite{Gruss2015}.
 
-The attack is performed in 3 steps: calibration, profiling and exploit. For each
-of these steps, a folder exists in the repository.
+The attack is performed in 3 steps: calibration, profiling and exploit. For each of these steps, a folder exists in the repository.
 
 \subsection{Step 1: Calibration}
 \label{subsec:step1calibration}
 
-In this step we want to create the histogram which depicts the cache misses and
-hits as a function of the number of CPU cycles. Then we will be able to extract
-the threshold that will match the CPU on which we perform the attack. In order
-to perform the calibration, we run the following commands:
+In this step, we want to create the histogram, which depicts the cache misses and hits as a function of the number of CPU cycles. Then we will be able to extract the threshold that will match the CPU on which we perform the attack. In order to perform the calibration, we run the following commands:
 
 \begin{lstlisting}[language=bash]
   $ cd calibration
   $ make
   $ ./calibration
 \end{lstlisting}
-
-The calibration works by generating multiple cache misses and cache hits, and
-measuring the number of CPU cycles it takes to access a variable. Each of these
-cases is being performed multiple times in order to get rid of the noise.
+The calibration works by generating multiple cache misses and cache hits and measuring the number of CPU cycles it takes to access a variable. Each of these cases is being performed multiple times in order to get rid of the noise.
 
 \noindent We build a histogram of cache hits and cache misses as described in
 previous \cref{subsubsec:buildingthehistogram}. The output of the calibration
@@ -634,12 +627,7 @@ clear line in approximately $220$ CPU cycles.
 \subsection{Step 2: Profiling}
 \label{subsec:step2profiling}
 
-After finding the threshold, we can now profile in order to find the cache lines
-that are actually useful to get information about the target program. Choosing
-gedit as the target program, we first need to find the shared library that it
-uses, so we can give it as an input to the profiler. We then need to find this
-shared library file location and size. In order to do that, we can use the
-following one-liner:
+After finding the threshold, we can now profile in order to find the cache lines that are useful to get information about the target program. Choosing gedit as the target program, we first need to find the shared library that it uses so that we can give it as an input to the profiler. We then need to find this shared library file location and size. In order to do that, we can use the following one-liner:
 \begin{lstlisting}
 $ cat /proc/`ps -A | grep gedit | grep -oE "^[0-9]+"`/maps | grep r-x | grep libgedit
 \end{lstlisting}
@@ -660,8 +648,7 @@ file name):
 7f2d83197000-7f2d8326d000 r-xp 00000000 08:02 1080575             /usr/lib/gedit/libgedit.so
 \end{lstlisting}
 
-Before we can feed the above line to the profiler, we need to update the
-threshold to the value we found in the calibration step. We can do this by
+We need to update the threshold to the value we found in the calibration step before we can feed the above line to the profiler. We can do this by
 editing the profiler source file (under the profiling directory) and updating
 the line with the constant 
 \begin{lstlisting}[language=bash]
@@ -670,8 +657,7 @@ the line with the constant
 to the threshold we have.
 
 After updating the threshold, we can run \texttt{make} to compile the profiler.
-We then use \texttt{sleep 3} so we can have time to trigger the event before the
-profiler starts, and run the profiler with the line we found above: 
+We then use \texttt{sleep 3} so we can have time to trigger the event before the profiler starts, and run the profiler with the line we found above: 
 \begin{lstlisting}[language=bash]
 sleep 3; ./profiling 200 7f2d83197000-7f2d8326d000 r-xp 00000000 08:02 1080575                    /usr/lib/gedit/libgedit.so
 \end{lstlisting}
@@ -684,7 +670,7 @@ command). The output is the number of hits that happened in every address.
 
 The idea is that if a 0 is shown for a given address while triggering the event,
 then it means that the line in this address was never accessed for this event.
-Eventually, we will get lines with a number of cache hits, and we want the ones
+Eventually, we will get lines with some cache hits, and we want the ones
 that have at least a non zero value when profiling.
 
 \begin{figure}[!ht]
@@ -718,19 +704,15 @@ giving one of the addresses we found as the offset argument. Starting from the
 address with the most hits, we can see that even if we are not pressing any key,
 we are still getting events. The reason for that is that this address is related
 to the blinking cursor. This is, of course, not really interesting information,
-and we can understand that it's not always the address that has the most hits
+and we can understand that it is not always the address that has the most hits
 that is the most valuable. Trying the next interesting address indeed gives us
 information about the pressed keys, which is what we wanted to achieve. However,
-moving the mouse also gives us a lot of hits, which is not perfect. What we will
-need to do is to inspect the addresses one by one until we find an address that
-will only work for keystrokes.
+moving the mouse also gives us a lot of hits, which is not perfect. We will need to inspect the addresses one by one until we find an address that will only work for keystrokes.
 
 We can even further improve the attack by finding the complete matrix of the
 keystrokes for each of the keys as shown in \Cref{fig:cache-keymap-matrix}. We
 can see that for different keys, there is a different “signature” of the
-accessed addresses. Although we may not be able to identify each keystroke
-precisely, we can try to group the keystrokes to different addresses and
-eliminate some guesses if we are able to spy on more than one address at a time.
+accessed addresses. Although we may not be able to precisely identify each keystroke, we can try to group the keystrokes to different addresses and eliminate some guesses if we can spy on more than one address at a time.
 
 \begin{figure}[!ht]
     \centering
