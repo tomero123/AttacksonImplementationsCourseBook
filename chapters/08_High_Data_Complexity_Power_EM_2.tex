@@ -597,6 +597,17 @@ Note that you need to recover the weight for every neuron separately, which may 
 \subsubsection{Reverse-Engineering Layers and Neurons}
 Simple observations of Figures~\ref{fig:layer-a},\ref{fig:layer-b},\ref{fig:layer-c} would show repeating patterns in each graph, which actually reveal the number of neurons.
 As for the number of layers, or where the computation of each layer begins or ends (the red lines in the figures), we use CPA.
+To determine if the targeted neuron is in the same layer as
+previously attacked neurons, or in the next layer, we perform a weight recovery using two sets of data.
+Let us assume that we are targeting the first hidden layer (the same approach can be done on different layers as well).
+Assume that the input is a vector of length \(N_0\), so the input x can be represented x = \(x_1\),...,\(x_{N_0}\)
+For the targeted neuron \(y_n\) in the hidden layer, perform the weight recovery on 2 different hypotheses.
+For the first hypothesis, assume that the \(y_n\) is in the first hidden layer. Perform weight recovery individually using
+\(x_i\), for \( 1\leq i \leq N_0\).
+For the second hypothesis, assume that \(y_n\) is in the next
+hidden layer (the second hidden layer).
+Perform weight recovery individually using \(y_i\), for \(1\leq i \leq (n − i)\). For each hypothesis, record the maximum (absolute) correlation value, and compare both. Since the correlation depends on both inputs to the
+multiplication operation, the incorrect hypothesis will result in a lower correlation value.
 
 \begin{figure}
     \centering
@@ -619,6 +630,229 @@ As for the number of layers, or where the computation of each layer begins or en
     \label{fig:layer-c}
 \end{figure}
 
+\subsubsection{Recovery of the Full Network Layout}
+The combination of previously developed individual techniques
+can thereafter result in full reverse engineering of the network. The full network recovery is performed layer by layer, and for each layer, the weights for each neuron have to be recovered one at a time. The first step is to recover the weight \(w_{L_0}\) of each connection from the input layer \(L_0\) and the first hidden layer \(L_1\). In order to determine the output of the sum of the multiplications, the number of neurons in the layer must be known. Using the same set of traces, timing patterns for different inputs to the activation function can be built. The same steps are repeated in the subsequent layers \(L_1,...,L_{N-1}\)
+
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{images/chapter8/reverse_methodology.PNG}
+    \caption{Methodology to reverse engineer the target neural network}
+\end{figure}
+
+\subsubsection{Results}
+In this experiment we used ARM Cortex M-3 processor. 
+\newline
+The first experiment done with MLP model and The databases MNIST and DPAv4.
+For DPAv4 database the original accuracy equals 60.9\% and the accuracy of the reverse engineered network is 60.87\%.
+For MNIST database the accuracy of the original network is equal to 98.16\% and the accuracy of the reverse engineered network equals 98.15\%, with an average weight error converging to 0.0025.
+\newline
+The second experiment done with CNN model and CIFAR-10 dataset. We choose as target the multiplication operation from the input with the weight, similar as in previous experiments. Differing from previous experiments, the operations on real values are here performed using fixed-point arithmetic. The numbers are stored using 8-bit data type – int8 (q7). The resulting multiplication is stored in temporary int variable. The original accuracy of the CNN equals 78.47\% and the
+accuracy of the recovered CNN is 78.11\%.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/int_int8.PNG}
+    \caption{The correlation of correct and wrong weight hypotheses on different number of
+traces targeting the result of multiplication operation stored as different variable type:
+(a) int, (b) int8}
+\end{figure}
+
+\subsubsection{Recovering the Input of Neural Networks}
+The underlying neural network architecture of the used
+network is public and all the weights are known.
+Attacker is capable of measuring side-channel information
+leaked from the implementation of the targeted architecture.
+The crucial information for this work are the weights of the
+first layer. Indeed, when MLP reads the input, it propagates it to all the nodes, performing basic arithmetic operations.
+This arithmetic operation with different weights and common
+unknown input leads to input recovery attack via side-channel.
+The power consumption of loading data x is: 
+$$HW(x) = \sum_{i=1}^{n} {x_i}$$
+where \(x_i\) represents the \(i^{th}\) bit of x.
+In our case, it is the product of secret input and known weight which is regularly stored to the memory after computation and results in the HW leakage.
+\newline
+The training phase is conducted offline, and the trained
+network is then implemented in C language and compiled on
+the microcontroller. In our experiments, we consider MLP architectures consisting of a different number of layers and nodes in those layers. Note, we are only interested in the input layer where a higher number of neurons is beneficial for the attacker. It can be extremely complex to recover the input by observing outputs from a known network. The proposed attack targets the multiplication operation in
+the first hidden layer. The main target for CPA is the multiplication m = x · w of a known weight w with a secret input x. As x changes from one measurement (input) to another, information learned from one measurement cannot be used with another measurement, preventing any statistical analysis over a set of different inputs. 
+\newline
+To perform information exploitation over a single
+measurement, we perform a horizontal attack. The weights in the first hidden layer are all multiplied with the
+same input x, one after the other. M multiplications, corresponding to M different weights (or
+neurons) in the first hidden layer are isolated.
+A single trace is cut into M smaller traces, each one
+corresponding to one multiplication with a known associated
+weight. Next, the value of the input is statistically inferred by applying a standard CPA as explained before on the M smaller traces.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/hpa.PNG}
+   \caption{One measurement with 4 multiplications
+aligned horizontally }
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/results.PNG}
+    \caption{ Results on ATMega,
+The first byte recovery (sign and 7-bit exponent).}
+\end{figure}
+
+The attack needs around 20 or more multiplications to reliably recover the input. In general, 70 multiplications are enough to recover all the bytes of the input, up to the desired precision of 2 decimal digits. This means that in the current setting, the proposed attack works very well on medium to large-sized networks, with at least 70 neurons in the first hidden layer, which is no issue in modern architectures used today.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/results2.PNG}
+    \caption{ Results on ARM Cortex M3,
+Correlation comparison between correct and incorrect inputs for target value
+2.453.}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/letters.PNG}
+    \caption{ Attack on MNIST Database, Original images (top) and recovered images with precision error (bottom).}
+\end{figure}
+
+\subsubsection{Deep Learning and Side Channel Attacks}
+Throughout history, many deep learning models have been built as described in Figure \ref{fig:deeplearning}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/deeplearning.PNG}
+    \caption{The history of the deep learning models}
+    \label{fig:deeplearning}
+\end{figure}
+
+Deep learning is part of a broader family of machine learning methods based on artificial neural networks with representation learning. Learning can be supervised, semi-supervised or unsupervised.
+\newline
+A multilayer perceptron (MLP) is a class of feedforward artificial neural network (ANN). An MLP consists of at least three layers of nodes: an input layer, a hidden layer and an output layer. Except for the input nodes, each node is a neuron that uses a nonlinear activation function. MLP utilizes a supervised learning technique called backpropagation for training. Its multiple layers and non-linear activation distinguish MLP from a linear perceptron. It can distinguish data that is not linearly separable.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/many_layers.PNG}
+    \caption{Multilayer Perceptron - “Many” Hidden Layers}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/one_layer.PNG}
+    \caption{Multilayer Perceptron - One Hidden Layers}
+\end{figure}
+
+The Universal Approximation Theorem states that a feed-forward network with a single hidden layer containing a
+finite number of neurons can approximate continuous
+functions on compact subsets of $\mathbb{R}_{^n}$. Given enough hidden units and enough data, multilayer perceptrons can approximate virtually any function to any desired accuracy. Valid results if and only if there is a sufficiently large number of training data in the series.
+\newline
+Convolutional Neural Networks represent a type of neural networks which were first designed for 2-dimensional convolutions. They are primarily used for image classification but lately, they have proven to be powerful classifiers in other domains. From the operational perspective, CNNs are similar to ordinary neural networks: they consist of a number of layers where each layer is made up of neurons. CNNs use three main types of layers: convolutional layers, pooling layers, and fully-connected layers as described in Figure \ref{fig:cna} .
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/CNA.PNG}
+    \caption{Convolutional Neural Networks - Convolution Layer}
+    \label{fig:cna}
+\end{figure}
+
+The description of Convolutional Neural Network in SCA is described in Figure \ref{fig:cna_sca} .
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/cnn_sca.PNG}
+    \caption{Convolutional Neural Network in SCA}
+    \label{fig:cna_sca}
+\end{figure}
+
+In our experiment we used 4 datasets as described in Figure \ref{fig:dbs_cna} .
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/dbs_cna.PNG}
+    \caption{Databases used for our experiment}
+    \label{fig:dbs_cna}
+\end{figure}
+
+The results described in Figures \ref{fig:dpav4_results} \ref{fig:aes_rd_results} \ref{fig:ascad_results} .
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/dpav4.PNG}
+    \caption{Results for DPAv4 database}
+    \label{fig:dpav4_results}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/aes_rd.PNG}
+    \caption{Results for AES\_RD database}
+    \label{fig:aes_rd_results}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/ascad.PNG}
+    \caption{Results for ASCAD database}
+    \label{fig:ascad_results}
+\end{figure}
+
+There are two devices: one for training and the second one for attack. Two devices means there are two different keys. Usually, we make our lives simpler and assume only one device and the same key, but this is not the same.
+The setup for our experiment described in Figure \ref{fig:exp_setup} .
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/setup.PNG}
+    \caption{Experiment setup}
+    \label{fig:exp_setup}
+\end{figure}
+
+We tried multiple models. Same key and device as in \ref{fig:same_key_same_device} , Different key and same device as in \ref{fig:different_key_same_device} , same key and different device as in \ref{fig:same_key_differnet_device}, and different key and device as in \ref{fig:different_key_differnet_device} .The validation for our models describe in figure \ref{fig:validation} .
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/same_key_same_device.PNG}
+    \caption{Same key same device results}
+    \label{fig:same_key_same_device}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/same_key_different_device.PNG}
+    \caption{Same key different device results}
+    \label{fig:same_key_differnet_device}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/different_key_same_device.PNG}
+    \caption{Different key same device results}
+    \label{fig:different_key_same_device}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/different_key_different_device.PNG}
+    \caption{Different key different device results}
+    \label{fig:different_key_differnet_device}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/validation.PNG}
+    \caption{Validation for our experiment}
+    \label{fig:validation}
+\end{figure}
+
+Regarding multiple device model, instead of validating on the same device as training, we need
+one more device. Separate devices for train, validation, attack. If we do not have a third device, we can use artificial noise. The multiple model describe in Figure \ref{fig:multidevice} .
+ 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/chapter8/multidevice.PNG}
+    \caption{Multidevice model results}
+    \label{fig:multidevice}
+\end{figure}
 \subsection{Guest Lecture - Jiska Classen}
 The thesis Jiska Classen supervised focused on finding errors in random number generators for bluetooth devices, as the bluetooth specifications just states that the random number generator needs to be secure but not specifies how.
 In general, if some RNG does not pass statistical tests, it can be obviously broken.
