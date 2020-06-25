@@ -408,8 +408,20 @@ Here are a few interesting such types of side channels attacks
 
 In addition to those attacks, there are even more side channels attacks research and new weaknesses are discovered every time.
 More of such attacks like Specter, RowHummer, and many more will be described widely in this course.
-  
-    
 
-
+\subsection{Research Highlights}
+\title{A Note on the Confinement Problem}
+\maketitle
+The paper\cite{lampson1973note} discusses the meaning and implications of confining a problem during its execution.
+Multiple examples are presented to describe the problem and necessary conditions are stated and justified.\\\\
+We are already familiar with the need of protection systems to safeguard the data from unauthorized access or modification and programs from unauthorized execution. This requires creating a controlled environment where another, perhaps untrustworthy program could be run safely and was solved prior.\\\\
+Terminology - The customer wants to ensure that the service cannot read or modify any data which he did not explicitly grant access to.\\\\
+Even after we prevented all unauthorized access the service may be still able to injure the customer, this can be achieved by leaking the input data that the customer gives it. The service might leak data which the customer regards as confidential and generally there will be no indication that the security of data has been compromised. From now, the problem of constraining a service will be called the confinement problem. We would like to characterize this problem precisely and describe methods to block some of the possible escape paths for data from confinement.\\\\
+Our main goal is to confine an arbitrary program. The program may not be able to work as usual when it is under confinement, but it will be unable to leak data.\\\\
+Some of the possible leaks might be (1) collecting data and returning it to the owner when called, (2) writing to a permanent file in its owner’s directory, (3) creating a temporary file for the owner to read before the service to complete its work, (4) Using the system’s interprocess communication facility.
+After presenting these types of leaks, the paper continues to elaborate about more advanced leaks through covert channels, i.e. channels which are not intended for information transfer.\\\\
+The first method is done by exploiting interlocks which prevent files from being open for writing and reading at the same time. The service and its owner can use this to simulate a shared Boolean variable which one program can set and the other can read, for transmitting a single bit. The second method is created by varying the ratio of computing to input/output or paging rate. A concurrently running process can observe the performance of the system and receive this information. \\\\
+The channels described above fall into three categories: storage of various kinds, Legitimate communication channels and covert channels.\\\\
+The paper then continues to discuss rules for confinement. The first observation is that a confined program must be memoryless. We can now state a rule of total isolation, forcing a confined program to not make any calls to any other programs. However, this rule is impractical. We need to improve this situation. A new confinement rule that we can formulate is transitivity, meaning that if a confined program calls another untrusted program, the called program must also be confined.\\\\
+Then, two simple principles are presented. The first one is called masking. This rule states that a confined program must allow the caller to determine its input into the different channels. However, in the case of covert channels, one further point must be made. We need to ensure that the input of a confined program to covert channels conforms to the caller's specifications. This might require slowing the program down, generating spurious disk references etc.
 
