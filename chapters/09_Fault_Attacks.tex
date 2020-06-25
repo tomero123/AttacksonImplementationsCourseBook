@@ -483,7 +483,7 @@ Additional related work on the topic of fault attacks includes:
 		the TrustZone - a TEE security approach deployed in ARM processors.
 		This attack, as opposed to the frequency manipulation in CLKscrew,
 		uses software-controlled voltage manipulation.
-		It is demonstrated on an ARM-based multi-core processor and manages to achieve several malicious goals: (1) acquire an AES key by cryptanalysis, (2) induce misbehavior in RSA decryption method to fake signatures and load unauthorized applications into TrustZone.
+		It is demonstrated on an ARM-based multi-core processor and manages to achieve several malicious goals: (1) acquire an AES key by cryptanalysis, (2) induce misbehavior in RSA decryption method to fake signatures and load unauthorized applications into TrustZone. More on VoltJockey in the next section.
 		
 		\item \textbf{Plundervolt} - a paper by Murdock et al. \cite{murdock2020plundervolt}, the first one that describes 
 		the use of voltage scaling for corruption of integrity and confidentiality
@@ -507,3 +507,20 @@ Additional related work on the topic of fault attacks includes:
 	\end{itemize}
 
 \end{itemize}
+
+\subsection{VoltJockey}
+As mentioned above, VoltJockey~\cite{qiu2019voltjockey} is a fault-injection attack, targeting the TrustZone execution environment of ARM processors.
+VoltJockey was deployed on the Krait multi-core processor, whose frequencies for each core can be different.
+However, the processor voltage is controlled with a shared hardware regulator, which introduces the main vulnerability that is exploited in this attack.
+VoltJockey uses software-controlled core frequency manipulation that is based on the susceptibility of DVFS.
+The attack was demonstrated in two use-cases that breach the system-wide secure technology in billions of ARM-based devices - TrustZone; (1) obtaining AES key, and (2) forge RSA signatures of unauthorized and possibly malicious applications.
+VoltJockey proved to be successful in a commerical device, the Google Nexus 6, and has demonstrated its dangerous implications in the secure execution environment TrustZone.
+
+An illustration of the VoltJockey attack process can be found in Figure~\ref{algo:voltjockey}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/chapter8/voltjockey_process.jpg}
+	\caption{VoltJockey attack process.}
+	\label{fig:voltjockey}
+\end{figure}
