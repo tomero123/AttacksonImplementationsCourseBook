@@ -440,22 +440,19 @@ it needs a shared memory. Illustration of the attack flow in \Cref{fig:fr_flow}.
 
 \subsubsection{Shared Memory}
 \label{subsubsec:sharedmemory}
-Common method to achieve a shared memory is by a feature called
+A common method to achieve a shared memory is by a feature called
 \textit{page-deduplication}. When two different independent processes are
 loading the same system library, some of their memory pages will be identical,
 when the operating system (in a cloud scenario - the hypervisor) identify
 separate identical physical memory pages, if page-deduplication is enabled, it
 will merge the physical pages in order to save physical memory, and two
 different virtual memory pages, one of each process, will be mapped into the
-same physical memory page. As of today, no cloud service company that takes
-itself seriously is using memory deduplication, e.g., Amazon EC2.
+same physical memory page. As of today, no serious cloud service company is using memory deduplication, e.g., Amazon EC2.
 
 \subsubsection{Evicts+Reload}
 \label{subsubsec:evictreload}
-A Flush+Reload variant which not require using the clflush instruction.
-Instead of using the clflush instruction, Evicts+Reload~\cite{Gruss2015}, is accessing physically congruent addresses in
-a large array which is placed in large pages by the operating system. In order to compute physically congruent addresses we need to determine the lowest 18 bits of the physical address to attack, which can then be used to evict specific cache sets.
-
+\cite{Gruss2015} demonstrated a substitution attack for Flush+Reload that does not require using a clflush instruction.
+This attack access physically congruent addresses in a large array, which is placed in large pages by the operating system. In order to compute physically congruent addresses, we need to determine the lowest 18 bits of the physical address to attack, which can then be used to evict specific cache sets.
 
 \subsection{Prime+Probe}
 \label{subsec:primeprobe}
@@ -468,10 +465,10 @@ the three following steps:
     \item \textbf{Prime.} The attacker primes the cache by reading memory lines
     from its own exclusive memory (no shared memory).
     \item \textbf{Victim.} The attacker lets the victim evict (or not evict)
-    lines while running, depending on the victim's behaviour.
+    lines while running, depending on the victim's behavior.
     \item \textbf{Probe.} The attacker probes data in a similar way of the prime
-    step but with measurement of how much time it takes to load the lines (Hit /
-    Miss), for each cache set, the attacker determine if the cache set has been
+    step but with the measurement of how much time it takes to load the lines (Hit /
+    Miss), for each cache set, the attacker determines if the cache set has been
     accessed.
 \end{enumerate}
 
@@ -482,7 +479,7 @@ the three following steps:
     \label{fig:pp_flow}
 \end{figure}
 
-\noindent In compare to Flush+Reload, this attack technique is less restrictive:
+\noindent In comparison to Flush+Reload, this attack technique is less restrictive:
 it does not require \texttt{clflush}, does not assume shared memory and possible
 from JavaScript. On the other hand, the granularity is coarser: 1 set.
 Illustration of the attack flow in \Cref{fig:pp_flow}.
@@ -494,38 +491,14 @@ memory, so the following questions arise:
     \item How do we do that without any privilege?
     \item In which order do we need to access them?
 \end{itemize}
-For doing that, we need an \textit{eviction set}: addresses in the same set, in
-the same slice and an \textit{eviction strategy}.
+To achieve that, we need an \textit{eviction set}: addresses in the same set, in the same slice and an \textit{eviction strategy}.
 
 \subsubsection{Eviction Set}
 \label{subsubsec:evictionset}
 \footnote{From now on, most of the details are correct for a common Intel CPU architecture.}
-We want to target the L3 for cross-core attacks and we need addresses that have
-the same set index. Consider the following cache settings, L3 for a 2-core CPU:
-4096 sets, 64B-lines, 12 or 16 ways. Since each memory address indicates one
-memory byte, the 6 least significant bits of the physical address indicate the
-line offset. For the sake of simplicity, we assume that the cache is not sliced,
-since there are $4096=2^{12}$ cache sets, the next 12 bits indicate the cache
-set. The L3 is physically indexed, so we need to choose addresses with fixed
-physical address bits. Unfortunately, address translation from virtual to
-physical is privileged. One of the properties of a virtual address is that a
-page offset stays the same from virtual to physical address, thus, some of the
-least significant bits of the virtual address can be used as a sneak peak to the
-physical address. A typical page size is 4KB, which means just 12 bits of page
-offset, i.e, 6 bits of line offset and 6 least significant bits of the cache set
-out of 12. To overcome this limitation, we can use a special type of enlarged
-pages called \textit{Huge Pages} which are 2MB size each, that is - 21 bits of
-page offset. This way the set index bits are included in the 21 LSB of the
-address.
+We want to target the L3 for cross-core attacks and we need addresses that have the same set index. Consider the following cache settings, L3 for a 2-core CPU: 4096 sets, 64B-lines, 12 or 16 ways. Since each memory address indicates one memory byte, the 6 least significant bits of the physical address indicates the line offset. For simplicity, we assume that the cache is not sliced, since there are $4096=2^{12}$ cache sets, and the next 12 bits indicate the cache set. The L3 is physically indexed, so we need to choose addresses with fixed physical address bits. Unfortunately, address translation from virtual to physical is privileged. One of the virtual addresses' properties is that a page offset stays the same from virtual to physical address. Thus, some of the least significant bits of the virtual address can be used as a sneak peek to the physical address. Typical page size is 4KB, which means just 12 bits of page offset, i.e., 6 bits of line offset and 6 least significant bits of the cache set out of 12. To overcome this limitation, we can use a special type of enlarged pages called \textit{Huge Pages}, which are 2MB size each, that is - 21 bits of page offset. This way, the set index bits are included in the 21 LSB of the address. 
 
-We now have another issue, in practice, the L3 is divided in slices, as many
-slices as cores. We usually have 2048 sets per slice, that is, actually 11 bits
-for the set index. We cannot infer the slice number directly from the address,
-neither from the virtual or the physical. The slice number of each memory line
-is determined by a hash function which takes all the address bits as input,
-including physical page number bits (outside the known bits from page offset).
-Illustration of which bits of the address indicates what for both typical pages
-and huge pages is shown in \Cref{fig:slicedcache}.
+We now have another issue; in practice, the L3 is divided into slices, as many slices as cores. We usually have 2048 sets per slice, that is, actually 11 bits for the set index. We cannot infer the slice number directly from the address, neither from the virtual or the physical. The slice number of each memory line is determined by a hash function, which takes all the address bits as input, including physical page number bits (outside the known bits from page offset). The Illustration below shows the address bit indication for both typical pages and huge pages.
 
 \begin{figure}[!ht]
     \centering
@@ -534,10 +507,8 @@ and huge pages is shown in \Cref{fig:slicedcache}.
     \label{fig:slicedcache}
 \end{figure}
 
-In addition, the mentioned hash function is undocumented, it designed for
-performance. But, it does not mean that it is impossible to target the same set
-in the same slice. Previous work~\cite{EURECOM+4671} showed that the hash
-function can be reverse engineered, for example in \Cref{fig:hashfunc}.
+Also, the mentioned hash function is undocumented; it designed for
+performance. But, it does not mean that it is impossible to target the same set in the same slice. Previous work~\cite{EURECOM+4671} showed that the hash function could be reverse engineered, for example, in \Cref{fig:hashfunc}.
 
 \begin{figure}[!ht]
     \centering
@@ -575,7 +546,7 @@ with $n$ addresses for a $n$-way cache. If the replacement policy is LRU, it
 access addresses from eviction set 1 by 1. If the replacement policy is not LRU,
 the eviction rate is lesser than $100\%$, e.g. $75\%$ on Haswell. For non-LRU
 caches, we can use some heuristics, as in \Cref{fig:haswellstrategy}, that will
-result with a higher eviction rate.
+result in a higher eviction rate.
 
 \begin{figure}[!ht]
     \centering
@@ -597,13 +568,12 @@ To sum it up, in practice, for Prime+Probe on recent processors we need:
 \subsection{Hardware vs. implementations}
 \label{subsec:Hardwarevsimplementations}
 
-To perform a cache side-channel attack on some software you need two things:
-First, shared and vulnerable hardware. Note that there will be no side channel
+To perform a cache side-channel attack on some software, you need two things:
+First, shared and vulnerable hardware. Note that there will be no side-channel
 if every memory access takes the same time or if you cannot share the hardware
 component. Second, a vulnerable implementation. Note that a vulnerable
-implementation doesn't mean that the algorithm is vulnerable. For example, we
-can take specific implementation of AES and RSA, this doesn't mean that AES and
-RSA are broken. Not all implementations are created equal.
+implementation does not mean that the algorithm is vulnerable. For example, we
+can take the specific implementation of AES and RSA, this does not imply that AES and RSA are defective. Not all implementations are created equal.
 
 To sum up, hardware will most likely stay vulnerable, so patch implementations
 when you can. And remember, constant time is not enough - because an attacker
@@ -612,38 +582,31 @@ can modify the internal state of the micro-architecture.
 \section{Step by Step Attack Demo} %yaniv
 \label{sec:stepbystepattack}
 
-The target of the attack in this demonstration, is to get the timestamp of the
+The target of the attack in this demonstration is to get the timestamp of the
 keystrokes pressed by a user in a gedit program. We only target the timestamps
-and not the keystrokes themselves, as we are not able to fully recover the
+and not the keystrokes themselves, as we cannot fully recover the
 pressed keys.
 
 The demonstration is performed on a non-virtualized Linux environment. A
 requirement to perform the attack is having an Intel CPU, as we need the
-inclusive property of L3 cache. The code for performing the attack can be cloned
+inclusive property of the L3 cache. The code for performing the attack can be cloned
 from the git repository~\cite{GitClementine}. It is based on the Flush+Reload
 cache attack that we mentioned in \cref{subsec:flushreload} presented
 in~\cite{Yarom2014} and~\cite{Gruss2015}.
 
-The attack is performed in 3 steps: calibration, profiling and exploit. For each
-of these steps, a folder exists in the repository.
+The attack is performed in 3 steps: calibration, profiling and exploit. For each of these steps, a folder exists in the repository.
 
 \subsection{Step 1: Calibration}
 \label{subsec:step1calibration}
 
-In this step we want to create the histogram which depicts the cache misses and
-hits as a function of the number of CPU cycles. Then we will be able to extract
-the threshold that will match the CPU on which we perform the attack. In order
-to perform the calibration, we run the following commands:
+In this step, we want to create the histogram, which depicts the cache misses and hits as a function of the number of CPU cycles. Then we will be able to extract the threshold that will match the CPU on which we perform the attack. In order to perform the calibration, we run the following commands:
 
 \begin{lstlisting}[language=bash]
   $ cd calibration
   $ make
   $ ./calibration
 \end{lstlisting}
-
-The calibration works by generating multiple cache misses and cache hits, and
-measuring the number of CPU cycles it takes to access a variable. Each of these
-cases is being performed multiple times in order to get rid of the noise.
+The calibration works by generating multiple cache misses and cache hits and measuring the number of CPU cycles it takes to access a variable. Each of these cases is being performed multiple times in order to get rid of the noise.
 
 \noindent We build a histogram of cache hits and cache misses as described in
 previous \cref{subsubsec:buildingthehistogram}. The output of the calibration
@@ -664,12 +627,7 @@ clear line in approximately $220$ CPU cycles.
 \subsection{Step 2: Profiling}
 \label{subsec:step2profiling}
 
-After finding the threshold, we can now profile in order to find the cache lines
-that are actually useful to get information about the target program. Choosing
-gedit as the target program, we first need to find the shared library that it
-uses, so we can give it as an input to the profiler. We then need to find this
-shared library file location and size. In order to do that, we can use the
-following one-liner:
+After finding the threshold, we can now profile in order to find the cache lines that are useful to get information about the target program. Choosing gedit as the target program, we first need to find the shared library that it uses so that we can give it as an input to the profiler. We then need to find this shared library file location and size. In order to do that, we can use the following one-liner:
 \begin{lstlisting}
 $ cat /proc/`ps -A | grep gedit | grep -oE "^[0-9]+"`/maps | grep r-x | grep libgedit
 \end{lstlisting}
@@ -690,8 +648,7 @@ file name):
 7f2d83197000-7f2d8326d000 r-xp 00000000 08:02 1080575             /usr/lib/gedit/libgedit.so
 \end{lstlisting}
 
-Before we can feed the above line to the profiler, we need to update the
-threshold to the value we found in the calibration step. We can do this by
+We need to update the threshold to the value we found in the calibration step before we can feed the above line to the profiler. We can do this by
 editing the profiler source file (under the profiling directory) and updating
 the line with the constant 
 \begin{lstlisting}[language=bash]
@@ -700,8 +657,7 @@ the line with the constant
 to the threshold we have.
 
 After updating the threshold, we can run \texttt{make} to compile the profiler.
-We then use \texttt{sleep 3} so we can have time to trigger the event before the
-profiler starts, and run the profiler with the line we found above: 
+We then use \texttt{sleep 3} so we can have time to trigger the event before the profiler starts, and run the profiler with the line we found above: 
 \begin{lstlisting}[language=bash]
 sleep 3; ./profiling 200 7f2d83197000-7f2d8326d000 r-xp 00000000 08:02 1080575                    /usr/lib/gedit/libgedit.so
 \end{lstlisting}
@@ -714,7 +670,7 @@ command). The output is the number of hits that happened in every address.
 
 The idea is that if a 0 is shown for a given address while triggering the event,
 then it means that the line in this address was never accessed for this event.
-Eventually, we will get lines with a number of cache hits, and we want the ones
+Eventually, we will get lines with some cache hits, and we want the ones
 that have at least a non zero value when profiling.
 
 \begin{figure}[!ht]
@@ -748,19 +704,15 @@ giving one of the addresses we found as the offset argument. Starting from the
 address with the most hits, we can see that even if we are not pressing any key,
 we are still getting events. The reason for that is that this address is related
 to the blinking cursor. This is, of course, not really interesting information,
-and we can understand that it's not always the address that has the most hits
+and we can understand that it is not always the address that has the most hits
 that is the most valuable. Trying the next interesting address indeed gives us
 information about the pressed keys, which is what we wanted to achieve. However,
-moving the mouse also gives us a lot of hits, which is not perfect. What we will
-need to do is to inspect the addresses one by one until we find an address that
-will only work for keystrokes.
+moving the mouse also gives us a lot of hits, which is not perfect. We will need to inspect the addresses one by one until we find an address that will only work for keystrokes.
 
 We can even further improve the attack by finding the complete matrix of the
 keystrokes for each of the keys as shown in \Cref{fig:cache-keymap-matrix}. We
 can see that for different keys, there is a different “signature” of the
-accessed addresses. Although we may not be able to identify each keystroke
-precisely, we can try to group the keystrokes to different addresses and
-eliminate some guesses if we are able to spy on more than one address at a time.
+accessed addresses. Although we may not be able to precisely identify each keystroke, we can try to group the keystrokes to different addresses and eliminate some guesses if we can spy on more than one address at a time.
 
 \begin{figure}[!ht]
     \centering
@@ -771,3 +723,22 @@ eliminate some guesses if we are able to spy on more than one address at a time.
 
 Finally, as it may be annoying to perform the above process manually, we can
 automate the event triggering and other stuff as shown in~\cite{GitGruss}.
+
+\section{Cache Template Attacks Paper} \label{sec:Cache Template Attacks Paper}
+\begin{itemize}
+    \item \textbf{Cache Template Attacks Paper} - The article is called “Cache Template Attacks:
+    Automating Attacks on Inclusive Last-Level Caches” by Daniel Gruss et el.
+    Cache Template Attacks consist of two phases. In the
+    profiling phase, they determine dependencies between the
+    processing of secret information and specific
+    cache accesses. In the exploitation phase, they derive the
+    secret values based on observed cache accesses.
+    Among the presented attacks is the application of Cache
+    Template Attacks to infer keystrokes and—even more
+    severe—the identification of specific keys on Linux and
+    Windows user interfaces.
+    Furthermore, they perform an automated attack on the Ttable-based AES implementation of OpenSSL that is as
+    efficient as state-of-the-art manual cache attacks.
+    
+    \href{https://www.usenix.org/system/files/conference/usenixsecurity15/sec15-paper-gruss.pdf}{Cache Template Attacks Paper}.
+\end{itemize}

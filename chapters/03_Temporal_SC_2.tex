@@ -692,6 +692,12 @@ demonstrated how he can also use timing attack to read the user's stream.
     They also discovered that Montgomery’s Ladder was actually the most susceptible to the attack.
     \href{https://www.eng.tau.ac.il/~yash/ieee-host-2017.pdf}{Photonic Side Channel Attacks Against RSA}.
 
+    \item \textbf{Thermal Covert Channels on Multi-core Platforms} - This paper demonstrates a way to leak information between 2 applications which are running on the same machine but with complete CPU core isolation or timing separation.
+The paper is presenting a way to bypass the first tactic by utilizing the heat factor and describing an attack where one CPU core is generating heat because of running a CPU intensive task (such as RSA decryption looped for 100 milliseconds) and the nearby CPU core picking up the heat as it propagates from the original core to its neighbors (by the laws of physics).
+The way to bypass the second type of isolation is just like the first one, but in this example the applications are not running at the same time. Still, the second application can track the remmant heat generated from the first application.
+The paper then offers a future work where an application can use these methods in combination with machine learning techniques to be able to learn the purpose of other applications running on the same machine without having the permissions to do so.
+    \href{https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/masti}{Thermal Covert Channels on Multi-core Platforms}.
+
     \item  \textbf{Summarize of Drones’ Cryptanalysis -} 
     \\ \textbf{Smashing Cryptography with a Flicker Paper}
     This paper \cite{nassi2019drones} addresses the question how we can tell whether a passing drone is being used by its operator for a legitimate purpose (e.g., delivering pizza) or an illegitimate purpose (e.g., taking a peek at a person showering in his/her own house).\\
