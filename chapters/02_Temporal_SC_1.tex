@@ -243,6 +243,32 @@ about the algebra behind RSA. However it is important for us to familiarize ours
 with the basics of RSA in order to understand later how it was optimized and how
 can we break it.
 
+\subsection{Research Highlights}
+Timing and side channel attacks are well-known concepts in computer security and have
+been used to attack many kinds of systems, among those systems are cryptographic 
+implementations, OpenSSL, SSH sessions, web applications and virtual machine 
+environments. The following subsection will be devoted to showcase inspired works 
+on some of the susceptible systems mentioned above. As mentioned at the beginning
+of the chapter, one of the pioneers to interduce these of attacks is Paul C Kocher 
+in his paper ~\cite{kocher1996timing}. He described the ability of an adversary to 
+find the private key of a cryptosystem by carefully measuring the amount of time required to perform 
+private key operations. 
+Another interesting work was done by D. Brumley et. al. ~\cite{brumley2005remote} who expanded
+the concept of timing attacks to apply for general software systems. Specifically, 
+he and his colleagues devised a timing attack against OpenSSL. 
+Through experiments they showed that they can extract private keys from an 
+OpenSSL-based web server running on a machine in the local network. 
+D. X. Song et. al. ~\cite{song2001timing} showed that using statistical techniques on timing 
+information received through exploitation of two relatively minor weaknesses in SSH 
+can lead to exfiltration of users typing in SSH session. 
+In recent years, a wide variety of defense methods to protect both user space and 
+kernel space code have been developed. As such, the attack surface of conventional 
+exploitation strategies has been reducing significantly.
+Thus, both user space and kernel space code have become a target of timing side 
+channels attacks. Hund et. al. ~\cite{hund2013practical} presented that an adversary can 
+implement a timing attack against the memory management system to deduce information 
+about the privileged address space layout.  
+
 \subsection{See also}
 \begin{enumerate}
     \item John Wiley and Sons Chichester , "Overview about Attacks on Smart
