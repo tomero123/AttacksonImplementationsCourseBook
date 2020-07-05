@@ -1,3 +1,4 @@
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 \chapter{Fault Attacks}\label{cha:c9_ninthchapter}
 
 \begin{centering}
@@ -24,24 +25,24 @@ attacker extract secrets.
 In fault attacks we will become \emph{active} in the sense that we will give the
 device-under-test (DUT) additional inputs such as heat or radiation.
 
-One problem with Fault attacks: they use the strongest attack model, meaning --
+One problem with Fault attacks is that they use the strongest attack model, meaning --
 we assume most power on the attacker's part.
 
 \section{Active Attacks}\label{sec:active_attacks}
 \paragraph{Definition:}
 \begin{quote}
-	\textit{``A faul attack is an active attack that allows extraction of secret information from cryptographic devices by breaking those devices.''}
+	\textit{``A fault attack is an active attack that allows extraction of secret information from cryptographic devices by breaking those devices.''}
 \end{quote}
 
-In fault attacks we are being \emph{active} -- we give additional inputs beside
+In fault attacks we, the attackers, are \emph{active} -- we give additional inputs beside
 the main input such as:
-\begin{enumerate}
+\begin{itemize}
 	\item Fuzzing (garbage or bad input)
 	\item Radiation
 	\item Heat
 	\item Vibration
 	\item Power spikes etc.
-\end{enumerate}
+\end{itemize}
 
 This way, we receive other (usually erroneous) outputs which might give us
 additional information about the computation and/or the secret. This process is
@@ -50,10 +51,10 @@ described in \Cref{fig:fault_attacks_schematic}.
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/chapter_9/fault_attacks_schematic.png}
-	\caption{A schematic diagram of fault attacks and leakage types.}\label{fig:fault_attacks_schematic}
+	\caption{A schematic diagram of fault attacks and leakage types}\label{fig:fault_attacks_schematic}
 \end{figure}
 
-Like with passive attacks, some of those outputs can be acquired at different
+Like with passive attacks, some of these outputs can be acquired at different
 stages of the computation process.
 
 Many fault attacks are inspired by studies in the field of \emph{reliability}: a
@@ -90,11 +91,11 @@ How can \emph{breaking} a device help an attacker?
 \end{enumerate}
 
 \section{Fault Attack Taxonomy}\label{sec:fault_attack_taxonomy}
-The tree ways we can examine a Fault Attack in order to understand it are:
+The three ways we can examine a Fault Attack in order to understand it are:
 \begin{enumerate}
-	\item Method - \emph{``How to inject?''}
-	\item Properties - \emph{``What fault to create?''}
-	\item Target - \emph{``Which part to break?''}
+	\item Method - \emph{``How to inject the fault?''}
+	\item Properties - \emph{``What class of fault to create?''}
+	\item Target - \emph{``Which part of the system to break?''}
 \end{enumerate}
 
 \subsection{Fault Methods}\label{subsec:fault_methods}
@@ -109,7 +110,7 @@ faulty state. Another attack method involving the power supply is injecting
 power spikes (to a similar effect).
 
 Some parts of a device are typically more sensitive to the power supply than
-others, and thus under- or over-powering the device will de-stabilize it and
+others, and thus under-powering or over-powering the device will de-stabilize it and
 inject faults.
 
 The obvious scenario for such an attack is when the DUT belongs to or is being
@@ -119,7 +120,9 @@ power as they wish.
 
 Another example of such attack scenarios is in the field of RFID readers -- the
 device powering an RFID chip is the reader, so a \emph{malicious} RFID reader
-can over/under-power the chip to achieve various faulty results.
+can over/under-power the chip to achieve various faulty results. For instance,
+if the RNG is connected to the power supply, we can mike its generated numbers
+deterministic.
 
 \subsubsection{Clock/Timing Attacks}\label{subsubsec:clock_timing_attacks}
 The clock is typically a bus shared by many of the system's components which
@@ -134,8 +137,8 @@ others are still being processed, and thus the device will be in a faulty
 (unstable) state.
 
 A notable example is the attack on Mifare Classic RFID chips we talked about in
-the beginning of the course~\cite{nohl2008} -- the RNG in the chip is only
-dependent on the time between powering up the RFID tag and challenging it. An
+the beginning of the course~\cite{nohl2008} -- the RNG in the chip is dependent
+only on the time between powering up the RFID tag and challenging it. An
 RFID reader operated by the attacker can control both parameters, thus making
 the generated challenges deterministic.
 
@@ -143,8 +146,8 @@ the generated challenges deterministic.
 This attack method relies on the physical property of electrons (current).
 Electrons ``jump'', and the higher the temperature -- they will jump more
 frequently and to longer distances. If a device gets \emph{too hot} -- enough
-electrons can ``jump'' e.g.\ over the insulation layer in a transistor to flip
-it from logical 1 to 0. This results in a fault.
+electrons can ``jump'' over the insulation layer in a transistor, for instance,
+to flip it from logical 1 to 0. This results in a fault.
 
 Because of the ubiquity of devices failures due to temperature, nowadays
 temperature sensors are integrated into most devices, so when it overheats --
@@ -165,7 +168,7 @@ to heat the memory chip of the device enough to flip some of the bits (for
 illustration see \Cref{fig:memory_lightbulb}). As a result, a small portion of
 the data-structures describing the arrays in memory now held wrong values (e.g.\
 changed their value from \(size=1\) to \(size=20\)). At this point, some
-affected data-structure \emph{contains} a header of a different data-structure,
+affected data-structures \emph{contain} a header of a different data-structure,
 to which the attackers now have read and write access. Changing the header of
 the second data structure to an arbitrary value gave the attackers access to the
 entirety of the device's memory.
@@ -173,7 +176,7 @@ entirety of the device's memory.
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/chapter_9/bulb.png}
-	\caption{A light bulb flipping memory bits filled with safe Java structures.}\label{fig:memory_lightbulb}
+	\caption{A light bulb flipping memory bits filled with safe Java structures}\label{fig:memory_lightbulb}
 \end{figure}
 
 \subsubsection{Optical, Electromagnetic}\label{subsubsec:optical_electromagnetic}
@@ -217,7 +220,7 @@ example:} Imagine that we have a pile of cipher devices with a 64bit key length,
 which work the following way: we can give the device a key and it tells us
 whether it's the right key.
 
-What if we have a DESTRUCTIVE fault attack that resets the top 32bits of a
+What if we have a \emph{destructive} fault attack that resets the top 32 bits of a
 device's key? We can brute force the key in \(2\cdot 2^{31}\) instead of
 \(2^{63}\) (on average):
 
@@ -226,12 +229,11 @@ bits of the key (\(O(2^{31})\)), then we pick another device from the pile and
 brute-force only the higher 32 bits (another \(O(2^{31})\)).
 
 \paragraph{A less trivial example:} We have a public-key device which we can ZAP
-and one bit of the key flips to zero.
-
+and one bit of the key flips to zero. \\
 We can save all of the plaintexts-cipher pairs until we reach the one matching
 an all zero key -- which we can pre-calculate. This gives us the Hamming weight
 of the key. Now we go back one plaintext-cipher pair -- we know that pair's
-key's Hamming weight to be exactly one -- meaning we need to brute-force only
+key's Hamming Weight to be exactly one -- meaning we need to brute-force only
 \(N\) keys (\(N\) is the key bit-length). Now we have the position of a single
 bit of the key.
 
@@ -241,7 +243,7 @@ can acquire the key in \(O(N^2)\) time!
 \subsection{Fault Target}\label{subsec:fault_targets}
 What could be targeted by a fault attack?
 \begin{enumerate}
-	\item Input parameters (fuzzing, clock glitching)
+	\item Input parameters (fuzzing, power and clock glitching)
 	\item Storage (volatile/non-volatile)
 	\begin{enumerate}
 		\item HDD -- Destructive (persists after reset)
@@ -251,17 +253,20 @@ What could be targeted by a fault attack?
 	% If we fault the disk/flash? It's a destructive fault! If we fault the RAM,
 	% the fault is permanent (not destructive). In cache? Transient fault! What
 	% other storage is there? Instruction cache.
-	\item Data processing: inject a fault mid-computation and the device gives a
+	\item Data processing: injecting a fault mid-computation and the device gives a
 	different answer.
 	\item Instruction Processing/Control Flow: inject a fault in the IP register
-	and change the instruction flow.
-	\begin{enumerate}
+	and change the instruction flow. There are various examples that demonstrate
+	the usefulness of this type of taget
+	\begin{itemize}
+		\item change the program counter to compromise control flow
 		\item ARM32 instructions are very densely packed, thus there is a very
 		high probability of hitting a valid instruction after flipping a single
-		bit. \texttt{jnz} and \texttt{jmp} are only one bit apart.
-		\item Change for loop condition to dump RAM contents including source
-		code.
-	\end{enumerate}
+		bit. For example, \texttt{jnz} and \texttt{jmp} are only one bit apart.
+		\item Change for loop condition in programs such as one that
+		reads from a buffer, if the loop is infinite, it would dump RAM contents
+		including source code.
+	\end{itemize}
 \end{enumerate}
 
 \paragraph{Two examples of Fault Attacks targeting Control Flow:}
@@ -269,7 +274,7 @@ What could be targeted by a fault attack?
 	\item The CHDK hacking community, used to dump the firmwares of Canon
 	cameras via blinking one of their LEDs~\cite{chdk, canon}.
 
-	\item ``The Unlooper'': Back in the 90's pay-tv devices started
+	\item The ``Unlooper'': Back in the 90's pay-tv devices started
 	cryptographically signing the content, and if the cryptographic checksum did
 	not check out -- the device would enter an endless loop. The hacking
 	community invented ``unloopers'' -- a gadget that would inject a power spike
@@ -280,13 +285,12 @@ What could be targeted by a fault attack?
 \section{Fault attack on RSA-CRT}\label{sec:fault_attack_on_rsa_crt}
 
 \subsection{RSA decryption}\label{subsec:rsa_decryption}
-\(N = p\cdot q\) \(M = C^d \pmod{n} = M^{ed} \pmod{n} = M^1 \pmod{n}\)
+\(n = p\cdot q\), \(M \equiv C^d  \equiv M^{ed \pmod{\phi(n)}} \equiv M^1 \equiv M \pmod{n}\)
 
 RSA decryption is hard!
 
 Let's speed it up using CRT (the Chinese Remainder Theorem): Multiplication
-operations are \(O(|n|^2)\). If we can do operations \(\pmod{p}\) and then
-\(\pmod{q}\) instead of \(\pmod{n}\), we will reduce computation time by half.
+operations are \(O(|n|^2)\). If we can do operations$\Mod{p}$ and then$\Mod{q}$ instead of$\Mod{n}$, we will reduce computation time by half.
 
 \paragraph{Explanation:}
 
@@ -306,17 +310,17 @@ So if we could multiply by \(p\) and \(q\) instead of by \(n\), we would cut
 	\includegraphics[width=0.5\linewidth]{images/chapter_9/soldiers.jpeg}
 	\caption{Chinese Remainder Theorem (Source: \url{https://russinoff.com/papers/crt.html})}\label{fig:chinese_remainder}
 \end{figure}
-The idea is that if we know both \(x \pmod{p}\) and \(x \pmod{q}\) then we can
-easily calculate \(x \pmod{n}\).
+The idea is that if we know both $x\Mod{p}$ and $x\Mod{q}$ then we can
+easily calculate $x\Mod{n}$.
 
-So, given a message \(M\) calculate \(M_p\) and \(M_q\): \(M_p = C^d
-\pmod{n}\pmod{p} = C^d \pmod{p}\) \(M_q = C^d \pmod{n}\pmod{q} = C^d \pmod{q}\)
+So, given a message \(M\), calculate \(M_p\) and \(M_q\): \(M_p \equiv C^d
+\pmod{n} \equiv C^d \pmod{p}\), \(M_q \equiv C^d \pmod{n} \equiv C^d \pmod{q}\)
 
 To combine the values, we do:
 \[M^* = CRT(M_p, M_q) = \]
-\[M_p \cdot q \cdot (q^{-1} \pmod p) + M_q \cdot p \cdot (p^{-1} \pmod q)\]
+\[M_p \cdot q \cdot (q^{-1} \Mod p) + M_q \cdot p \cdot (p^{-1} \Mod q)\]
 
-It is easily provable that \(M^* \pmod{p} = M_q\) and \(M^* \pmod{q} = M_p\), so
+It is easily provable that \(M^* \Mod{p} = M_q\) and \(M^* \Mod{q} = M_p\), so
 by the Chinese Remainder Theorem, this value \emph{must} be equal to \(M\).
 
 \subsubsection{The Boneh, DeMillo \& Lipton Fault Attack on RSA-CRT~\cite{boneh}}\label{subsubsec:the_boneh_demillo_lipton_fault_attack_on_rsa_crt}
@@ -327,32 +331,32 @@ attacker knows that the decryption box is decrypting using CRT\@. Finally, let
 us assume that the attacker can inject a fault (any fault) in the decryption
 process.
 
-The attacker first gets \(M = M_p\cdot q\cdot (q^{-1} \pmod{p}) + M_q\cdot
-p\cdot (p^{-1} \pmod{q})\) through the regular decryption process.
+The attacker first gets \(M = M_p\cdot q\cdot (q^{-1} \Mod{p}) + M_q\cdot
+p\cdot (p^{-1} \Mod{q})\) through the regular decryption process.
 
 Then, the attacker primes the device to re-calculate the message from the same
-cipher, this time injecting a \emph{fault} during the calculation of \(M_p\),
+cipher, this time injecting a \emph{transient fault} during the calculation of \(M_p\),
 resulting in the device erroneously producing \(M'_p\) instead: \(M'_p \neq C^d
-\pmod{p}\) The device will then proceed to combine \(M'_p\) with the correct
+\Mod{p}\) The device will then proceed to combine \(M'_p\) with the correct
 result of \(M_q\), resulting in:
-\[M' =  M'_p \cdot q \cdot (q^{-1} \pmod{p}) + M_q \cdot p \cdot (p^{-1}
-\pmod{q})\]
+\[M' =  M'_p \cdot q \cdot (q^{-1} \Mod{p}) + M_q \cdot p \cdot (p^{-1}
+\Mod{q})\]
 
 Now the attacker can calculate the value of \(M - M'\):
-\[[M_p \cdot q \cdot (q^{-1} \pmod{p}) + M_q \cdot p \cdot (p^{-1} \pmod{q})]-\]
-\[[M'_p \cdot q \cdot (q^{-1} \pmod{p}) + M_q \cdot p \cdot (p^{-1}
-\pmod{q})]=\]
-\[(M_p - M'_p) \cdot q \cdot (q^{-1} \pmod{p})\]
+\[[M_p \cdot q \cdot (q^{-1} \Mod{p}) + M_q \cdot p \cdot (p^{-1} \Mod{q})]-\]
+\[[M'_p \cdot q \cdot (q^{-1} \Mod{p}) + M_q \cdot p \cdot (p^{-1}
+\Mod{q})]=\]
+\[(M_p - M'_p) \cdot q \cdot (q^{-1} \Mod{p})\]
 
 Finally, calculating the \(\gcd \) of \(n\) and \(M - M'\) yields:
 \[\gcd(n, M - M') = \gcd(p \cdot q, (M_p - M'_p) \cdot q \cdot (q^{-1}
-\pmod{p})) = q\]
+\Mod{p})) = q\]
 
 \paragraph{Why does this work?} The greatest common divisor of \(n\) and
 anything can be only \(p\), \(q\), \(n\) or \(1\). On the other hand, \(M_p\)
 and \(M'_p\) can never be multiples of \(p\), otherwise both would equal 0. So,
 by that reasoning, \(\gcd(p \cdot q, (M_p - M'_p) \cdot q \cdot (q^{-1}
-\pmod{p}))\) \underline{must} equal \(q\), and thus we have cracked the cipher
+\Mod{p}))\) \underline{must} equal \(q\), and thus we have cracked the cipher
 using a single fault attack.
 
 A later paper co-written by Arjen Lenstra~\cite{lenstra} further improved upon
@@ -374,19 +378,30 @@ In the final section, we will describe the Rowhammer attack.
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/chapter_9/DRAM.jpg}
-	\caption{High Level Illustration of DRAM Organization (Source: Wikipedia:Row Hammer)}\label{fig:dram_svg}
+	\caption{High Level Illustration of DRAM Organization (Source: Wikipedia: Row hammer)}\label{fig:dram_svg}
 \end{figure}
 
 \subsection{Double-sided Rowhammer}\label{subsec:double_sided_rowhammer}
 DRAM is the most common type of volatile memory. It is slow, dense and cheap
 relatively to SRAM\@. Every bit of RAM is stored in a single capacitor.
-
+Capacitors lose charge and they need to be periodically refreshed. The bits
+are selected using the \emph{row buffer}. \\
 The attack~\cite{rowhammer} utilizes the physical structure of RAM chips in
 order to induce faults: Due to parasitic leakage in DRAM capacitors, if enough
 consecutive reads are performed on the immediately adjacent rows eventually a
-bit will flip in the target row.
+bit will flip in the target row. \\
+The fault attack exploit code is as follows:
+\begin{verbatim}
+while (true) {
+    x = memory[address1];
+    y = memory[address2];
+}
+\end{verbatim}
+\paragraph{What happens here?}
+We infinitely read from adjacent rows, so eventually, we can cause a bit confusion.
 
-\subsubsection{The challenge of CPU caching}\label{subsubsec:the_challenge_of_cpu_caching}
+\subsubsection{Challenges}\label{subsubsec:the_challenge_of_cpu_caching}
+\paragraph{The challenge of CPU caching}
 The CPU cache prevents the same memory address to be read consecutively from
 main memory, for performance reasons. To circumvent this limitation, several
 techniques can be employed:
@@ -399,6 +414,9 @@ techniques can be employed:
 	reverse-engineered, so it is possible to arrange for \emph{arbitrary} cache
 	misses.
 \end{enumerate}
+\paragraph{Address findings:} The attacker needs to find
+addresses that are on the same chip, and are in adjacent rows
+for the attack to work.
 
 \subsection{Countermeasures}\label{subsec:countermeasures}
 \paragraph{Refresh-rate increase:} In order to overcome parasitic leakage, DRAM
@@ -431,7 +449,7 @@ hammer on it until a bit in the key flips, making it much easier to factor.
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.5\linewidth]{images/chapter_9/flip_feng_shui.PNG}
-	\caption{The attacker maps the same page as the victim, then utilizes rowhammer to change the victim's memory without causing page duplication.}
+	\caption{The attacker maps the same page as the victim, then utilizes Rowhammer to change the victim's memory without causing page duplication}
 	\label{fig:flip_feng_shui}
 \end{figure}
 
@@ -441,3 +459,86 @@ Rowhammer to quickly flip \emph{enough} (typically three) bits on an ECC-RAM
 chip that error correction will not be able to detect it, thus defeating the ECC
 mitigation. The attack relies on the fact that error-correction takes time to
 compute, and this gives the attacker a window of opportunity.
+
+\subsection{Rowhammer-based attacks}
+\subsubsection{RAMBleed}
+We will describe here Rowhammer based attack called RAMbleed which was presented in ~\cite{rambleed_paper}. While Rowhammer breaks data integrity, RAMBleed breaks also data confidentiality by allow the attacker read unauthorized memory areas. RAMBleed attack was implementes against OpenSSH server allowing the attacker read RSA secret private keys. 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/chapter_9/rambleed_memory_layout.png}
+	\caption{RAMBleed memory layout}
+	\label{fig:rambleed_memory_layout}
+\end{figure}
+In order to perform this attack, the attacker need to get to spesific memory layout, as describe in \Cref{fig:rambleed_memory_layout}. The attacker own A0, A1 and A2 block. Then attacker force OpenSSH server to put its private RSA key in oranges blocks by exploting linux buddy allocator which works in deterministic way. Then the attacker repeatedly accessing A0 and A2 blocks - this will access orange blocks 
+as well because when DRAM access a part of the row, it access the whole row as well. This will hammer the red block and cause bit flips over there. The attacker can then read the red block- because he own it, and gets the RSA secret key.
+
+The performence from this paper shows accuracy of 82\% when reading OpenSSH host key. Reading the victim’s secret in 0.31 bits/seconds.
+
+Suggested mitigations may be memory encryption, flushing keys from memory, probabilistic memory allocator and Hardware mitigations such as targeted row refresh and increasing refresh intervals.
+
+
+
+\section{Related Work} \label{sec:RelatedWork}
+
+Additional related work on the topic of fault attacks includes:
+
+\begin{itemize}
+
+	\item \textbf{DVFS} - Dynamic Voltage and Frequency Scaling 
+	attacks make use of voltage and frequency combinations
+	which are considered unstable.
+
+	\begin{itemize}
+
+		\item \textbf{CLKScrew} - a paper by 
+		Tang et al. \cite{tang2017clkscrew} that describes a technique that takes advantage of security vulnerabilities
+		caused by the constant strive to improve energy efficiency, more specifically energy management
+		mechanisms used in state-of-the-art mobile SoCs.
+		The attack is based on overclocking CPU frequency to inject faults into the victim process and breach the isolated Trusted Execution Environment (TEE).
+
+		\item \textbf{VoltJockey} - a paper by Qiu et al. \cite{qiu2019voltjockey} that describes a hardware fault-based attack on 
+		the TrustZone - a TEE security approach deployed in ARM processors.
+		This attack, as opposed to the frequency manipulation in CLKscrew,
+		uses software-controlled voltage manipulation.
+		It is demonstrated on an ARM-based multi-core processor and manages to achieve several malicious goals: (1) acquire an AES key by cryptanalysis, (2) induce misbehavior in RSA decryption method to fake signatures and load unauthorized applications into TrustZone. More on VoltJockey in the next section.
+		
+		\item \textbf{Plundervolt} - a paper by Murdock et al. \cite{murdock2020plundervolt}, the first one that describes 
+		the use of voltage scaling for corruption of integrity and confidentiality
+		of Intel SGX enclaved computations. The authors demonstrate full key recovery PoC attacks
+		against RSA-CRT and AES-NI.
+		
+		
+	\end{itemize}
+
+	\item \textbf{Speculative Fault Attacks} - Such attacks make use of the behavior of modern
+	processors and their attempt to predict and speculate the next instructions to be executed
+	for maximum performance. CPUs will try to execute instructions ahead of time.
+
+	\begin{itemize}
+
+		\item \textbf{Spectre - Exploting Speculative Execution} - a paper by Kocher et al that describes
+		a speculative fault attack that involves inducing a victim to speculatively perform operations
+		that would not occur during correct program execution and which leak the victim's confidential
+		information via a side-channel to the adversary.
+		
+	\end{itemize}
+
+\end{itemize}
+
+\subsection{VoltJockey}
+As mentioned above, VoltJockey~\cite{qiu2019voltjockey} is a fault-injection attack, targeting the TrustZone execution environment of ARM processors.
+VoltJockey was deployed on the Krait multi-core processor, whose frequencies for each core can be different.
+However, the processor voltage is controlled with a shared hardware regulator, which introduces the main vulnerability that is exploited in this attack.
+VoltJockey uses software-controlled core frequency manipulation that is based on the susceptibility of DVFS.
+The attack was demonstrated in two use-cases that breach the system-wide secure technology in billions of ARM-based devices - TrustZone; (1) obtaining AES key, and (2) forge RSA signatures of unauthorized and possibly malicious applications.
+VoltJockey proved to be successful in a commerical device, the Google Nexus 6, and has demonstrated its dangerous implications in the secure execution environment TrustZone.
+
+An illustration of the VoltJockey attack process can be found in Figure~\ref{algo:voltjockey}.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/chapter8/voltjockey_process.jpg}
+	\caption{VoltJockey attack process.}
+	\label{fig:voltjockey}
+\end{figure}

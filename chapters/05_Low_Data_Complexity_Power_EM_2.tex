@@ -171,8 +171,8 @@ one after another, if you want to write a new software for this computer you can
 write it in C or Java, they're cheap and commonly used.
 
 \begin{figure}[htp]
-\hspace*{-0.5in}
-\includegraphics[scale=0.4]{images/Lecture_5/ledger.png}
+\hspace*{0in}
+\includegraphics[scale=0.3]{images/Lecture_5/ledger.png}
 \caption{Bitcoin Wallet}\label{fig:Bitcoin Wallet}
 \end{figure}
 
@@ -203,7 +203,7 @@ book attacking ASIC.
 
 
 \begin{figure}[htp]
-\hspace*{+0.5in}
+\hspace*{0in}
 \includegraphics[scale=0.4]{images/Lecture_5/arduino.png}
 \caption{Arduino}\label{fig:Arduino}
 \end{figure}
@@ -227,8 +227,8 @@ the magic happens, this piece of silicone can actually do logic like multiply,
 add, shift or compare. 
 
 \begin{figure}[htp]
-\hspace*{-0.5in}
-\includegraphics[scale=0.4]{images/Lecture_5/8bit-mc.png}
+\hspace*{0in}
+\includegraphics[scale=0.3]{images/Lecture_5/8bit-mc.png}
 \caption{8-bit microcontroller}\label{fig:8-bit microcontroller}
 \end{figure}
 
@@ -281,8 +281,8 @@ from the phone, so you really have to decrypt the message.
 
 \begin{figure}[htp]
 \centering
-\hspace*{-0.5in}
-\includegraphics[scale=0.4]{images/Lecture_5/RSA-PA.png}
+\hspace*{0in}
+\includegraphics[scale=0.3]{images/Lecture_5/RSA-PA.png}
 \caption{RSA Power Analysis}\label{fig:RSA Power Analysis}
 \end{figure}
 
@@ -333,7 +333,7 @@ microcontroller has a secret key, and it uses an AES encryption. We can ask him
 to encrypt and decrypt, we send the command in the serial line.
 
 \begin{figure}
-\hspace*{0.5in}
+\hspace*{0in}
 \includegraphics[scale=0.5]{images/Lecture_5/AES_setup.png}
 \caption{AES Setup}\label{fig:AES Setup}
 \end{figure}
@@ -991,21 +991,28 @@ solver will fail. what can we do in this case? We try again.
     down a single variance $\sigma$, we keep track of a whole matrix of
     covariances. For example, to model three random variables ($\mathbf{X},
     \mathbf{Y}, \mathbf{Z}$), this matrix would be\\
+    
     \begin{minipage}{\linewidth}
       \centering
-      \includegraphics{images/Lecture_5/cov.png}
-      \end{minipage}
+      \includegraphics[scale=0.6]{images/Lecture_5/cov.png}
+      \end{minipage}\\
+      
+      
     Also, note that this distribution needs to have a mean for each random
     variable:\\
+    
        \begin{minipage}{\linewidth}
       \centering
-      \includegraphics{images/Lecture_5/mu.png}
-      \end{minipage}
+      \includegraphics[scale=0.7]{images/Lecture_5/mu.png}
+      \end{minipage}\\
+      
+      
     The PDF of this distribution is more complicated: The equation for k random
     variables is:\\
+    
      \begin{minipage}{\linewidth}
       \centering
-      \includegraphics{images/Lecture_5/dist.png}
+      \includegraphics[scale=0.7]{images/Lecture_5/dist.png}
       \end{minipage}
 
 \subsection{Creating the Template}
@@ -1073,31 +1080,31 @@ solver will fail. what can we do in this case? We try again.
       calculation will look like:
       \begin{figure}[htp]
       \centering
-      \includegraphics{images/Lecture_5/pc1.png}
+      \includegraphics[scale=0.7]{images/Lecture_5/pc1.png}
       \end{figure}
        
       \item Find the variance $v_i$ of the power at each point of interest. One
       way of calculating this is:
       \begin{figure}[htp]
       \centering
-      \includegraphics{images/Lecture_5/pic2.png}
+      \includegraphics[scale=0.7]{images/Lecture_5/pic2.png}
       \end{figure}
     
       \item Find the covariance $c_{i, i^*}$ between the power at every pair of
       POIs $(i and i^*)$. One way of calculating this is:
       \begin{figure}[htp]
       \centering
-      \includegraphics{images/Lecture_5/pic3.png}
+      \includegraphics[scale=0.7]{images/Lecture_5/pic3.png}
       \end{figure}
       \item Put together the mean and covariance matrices as:
     
       \begin{minipage}{\linewidth}
       \centering
-      \includegraphics{images/Lecture_5/pic5.png}
+      \includegraphics[scale=0.7]{images/Lecture_5/pic5.png}
       \end{minipage}
       \begin{minipage}{\linewidth}
       \centering
-      \includegraphics{images/Lecture_5/pic4.png}
+      \includegraphics[scale=0.7]{images/Lecture_5/pic4.png}
       \end{minipage}
       
     \end{itemize}
@@ -1113,17 +1120,18 @@ solver will fail. what can we do in this case? We try again.
     template to a single trace. Our job is to decide how likely all of our key
     guesses are. We need to do the following:
     \begin{itemize}
-      \item Put our trace values at the POIs into a vector. This vector will be
+      \item Put our trace values at the POIs into a vector. This vector will be:
+      
        \begin{minipage}{\linewidth}
       \centering
-      \includegraphics{images/Lecture_5/pic6.png}
+      \includegraphics[scale=0.7]{images/Lecture_5/pic6.png}
       \end{minipage}
        
       \item Calculate the PDF for every key guess and save these for later. This
       might look like:
-      \begin{minipage}{\linewidth}
+      \begin{minipage}{0cm}
       \centering
-      \includegraphics{images/Lecture_5/pic7.png}
+      \includegraphics[scale=0.7]{images/Lecture_5/pic7.png}
       \end{minipage}
       \item Repeat these two steps for all of the attack traces
     \end{itemize}
@@ -1135,7 +1143,7 @@ solver will fail. what can we do in this case? We try again.
     
     \begin{figure}[htp]
         \centering
-        \includegraphics{images/Lecture_5/pic8.png}
+        \includegraphics[scale=0.7]{images/Lecture_5/pic8.png}
        \end{figure}
     
     \subsection{practical template attacks}
@@ -1150,7 +1158,7 @@ solver will fail. what can we do in this case? We try again.
           operation k, then this average is\\
               \begin{minipage}{\linewidth}
               \centering
-              \includegraphics{images/Lecture_5/pic9.png}
+              \includegraphics[scale=0.7]{images/Lecture_5/pic9.png}
               \end{minipage}
            
           \item After finding all of the means, calculate all of their absolute
@@ -1160,13 +1168,13 @@ solver will fail. what can we do in this case? We try again.
           \\
               \begin{minipage}{\linewidth}
               \centering
-              \includegraphics{images/Lecture_5/pic10.png}
+              \includegraphics[scale=0.7]{images/Lecture_5/pic10.png}
               \end{minipage}
        \end{itemize}
         An example of this sum of differences is:\\
               \begin{minipage}{\linewidth}
               \centering
-              \includegraphics{images/Lecture_5/pic11.png}
+              \includegraphics[scale=0.7]{images/Lecture_5/pic11.png}
               \end{minipage}
         \\
 
@@ -1221,3 +1229,41 @@ solver will fail. what can we do in this case? We try again.
     the attacker is amplified. Using this approach, if n is the number of
     iterations, the error probability of template classification is reduced by
     the factor √n. 
+
+    \section{Related work} \label{sec:RelatedWork}
+    \begin{itemize}
+    \item \textbf{Power analysis attacks on the AES} - This paper describes an attack attack on the AES algorithm using the Difference of Means technique was carried out on a Field-Programmable Gate Array (FPGA) board.
+     The work of Coron et al. described the idea of using the Weight Power Model and experimentation was conducted on a smart card chip. Brier et al. expanded the work on CPA by proposing the use of a Hamming distance power model in place of Hamming weight while results were presented from data gathered from attacking an 8-bit chip against AES.
+     Alioto et al. proposed a novel CPA attack named Leakage Power Attack which is derived from the theory behind the Hamming Weight Power Model and results were conducted against a MC74ACT273N chip.
+     Lastly, Mestiri et al. describes an attack on a SASEBO-GII board against the AES algorithm with the goal of comparing the Hamming distance model against another derivative of the CPA called the Switching Distance model
+    \href{https://doi.org/10.1080/23742917.2016.1231523}{power analysis (DPA) and correlation power analysis (CPA)}.
+
+    \item  \textbf{Differential Power Analysis in AES: A Crypto Anatomy} 
+    The  initial  papers  on  DPA  are  abstract,  and  recent  papers  propose countermeasures  rather  than  describe  the  attack  methodology  itself.
+    None  of  the  previous  papers considered the pipeline effects in a processor, and almost all current processors contain pipelines. 
+    And most  of  the papers  do  not clearly  describe  the method  to  locate the  necessary power  magnitudes (corresponding to  the actual instructions which  are executed during  the SBOX lookup) from a long power profile.  
+    This journal describes the attack in a step by step manner, so that effective countermeasures can be proposed by a larger number of researchers. 
+    Even the recent papers in DPA approach tend to assume that the reader understands the anatomy of DPA well.
+    Yet, a number of researchers have asked us about how it is done, and this is an effort to  make the steps clear. 
+    We also look at the effect the pipeline has on the attack, and methods to identify which instructions are most vulnerable to attack.
+
+    \item  \textbf{Power Analysis Based Side Channel Attack} 
+    Work related to circuit level hardware countermeasures are very few. 
+    Sprunk in his invention uses a clock that outputs a stream of random clock pulses. 
+    When the clock is unpredictable, the moment at which a certain instruction would run is also unpredictable. 
+    Therefore the obtained power traces would be misaligned. The misalignment of power traces makes it necessary
+    to collect and analyse large number of power traces which makes the attack more time consuming. 
+    But many communication protocols such as USB and RS232 need a stable clock and
+    therefore usage of an unpredictable clock is a disadvantage is such situations
+    \href{https://arxiv.org/pdf/1801.00932.pdf}{Power analysis and Testbeds}.
+
+    \item   \textbf{One trace is all it takes: Machine Learning-based Side-channel Attack on EdDSA}\cite{cryptoeprint:2019:358} \\
+    The paper proposes a Convolutional Neural Network based profiling attack on the implementation of the Ed25519 Digital Signature Algorithm in the WolfSSL library on a 32 bit STM32F4 microcontroller.
+    The attack focuses on the optimized implementation of Elliptic Curve scalar multiplication by Bernstein et al\cite{Bernstein2012} that splits the computation to work on a single nibble of the ephemeral key at a time and uses a lookup table with all possible partial multiplication results.
+    The lookup table access is vulnerable to side channel data leakage via power analysis, similarly to the way an SBOX lookup is exploited for side channel attacks on AES.
+    The authors evaluate the standard template attack method as well as SVM and RandomForest based attack and finally - a CNN based attack that uses a CNN architecture similar to the well-known VGG model used for computer vision tasks, modified to work with 1D instead of 2D convolutions and fine tuned for SCA in terms of the number of layers and layer sizes. To evaluate the attacks, the authors construct a dataset mapping power traces to the respective ephemeral key nibbles processed when the power trace was recorded. Around 5K profiling (training) traces and 1K attack (test) traces are recorded and used for the evaluation.
+    The results show that the CNN based method has a 100\% accuracy of identifying the correct ephemeral key nibble given a trace from the attack set, whereas the SVM and Random Forest methods show a slighly lower accuracy and the template attack lags behind them all. As a consequence, the CNN based method is able to iteratively recover the entire 256bit ephemeral key using just a single guess of each of its 64 nibbles and the private scalar can be computed from the ephemeral key and the respective signed message using a straightforward mathematical formula, thus giving an attack the ability to forge message signatures.
+    Another important result is that as few as 500 training traces are sufficient to reach the 100\% accuracy with the CNN based attack.
+
+
+    \end{itemize}

@@ -28,6 +28,18 @@
     subjects = {Philosophy; Science; Evolution; Physics}
 }
 
+@inproceedings {cloud_covert_channel_usenix12,
+    author = {Zhenyu Wu and Zhang Xu and Haining Wang},
+    title = {Whispers in the Hyper-space: High-speed Covert Channel Attacks in the Cloud},
+    booktitle = {Presented as part of the 21st {USENIX} Security Symposium ({USENIX} Security 12)},
+    year = {2012},
+    isbn = {978-931971-95-9},
+    address = {Bellevue, WA},
+    pages = {159--173},
+    url = {https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/wu},
+    publisher = {{USENIX}},
+}
+
 @book{katz1996handbook,
   title={Handbook of applied cryptography},
   author={Katz, Jonathan and Menezes, Alfred J and Van Oorschot, Paul C and Vanstone, Scott A},
@@ -135,6 +147,17 @@
     author={Kaliski, Burt},
     journal={RSA Laboratories},
     year={2006}
+}
+
+@article{lampson1973note,
+  title={A note on the confinement problem},
+  author={Lampson, Butler W},
+  journal={Communications of the ACM},
+  volume={16},
+  number={10},
+  pages={613--615},
+  year={1973},
+  publisher={ACM New York, NY, USA}
 }
 
 @COMMENT Chapter 1 Sources END
@@ -369,25 +392,192 @@ title = "Confidentiality, Integrity, and Availability",
   organization={Springer}
 }
 
+
+@inproceedings{nassi2019drones,
+  title={Drones' Cryptanalysis-Smashing Cryptography with a Flicker},
+  author={Nassi, Ben and Ben-Netanel, Raz and Shamir, Adi and Elovici, Yuval},
+  booktitle={2019 IEEE Symposium on Security and Privacy (SP)},
+  pages={1397--1414},
+  year={2019},
+  organization={IEEE}
+}
+
+
+
+
 @COMMENT Chapter 6 sources
 @misc{hamming,
     publisher = "Wikipedia",
     title =     "Hamming weight",
     howpublished = "\url{https://en.wikipedia.org/wiki/Hamming_weight}"
 }
+@misc{wikiComputerMemoryHierarchy,
+  author = {Wikipedia},
+  title = {Memory Hierarchy},
+  year = 2020,
+  url = {https://en.wikipedia.org/wiki/Memory_hierarchy},
+  urldate = {2019-06-10}
+}
 @COMMENT Chapter 6 sources end
 
+@COMMENT Chapter 7 sources
+
+
+@COMMENT Chapter 7 sources end
+
 @COMMENT Chapter 8 Sources
+
+@misc{kocher1998introduction,
+  title={Introduction to differential power analysis and related attacks},
+  author={Kocher, Paul and Jaffe, Joshua and Jun, Benjamin and others},
+  year={1998}
+}
+
+@inproceedings{kocher1999differential,
+  title={Differential power analysis},
+  author={Kocher, Paul and Jaffe, Joshua and Jun, Benjamin},
+  booktitle={Annual International Cryptology Conference},
+  pages={388--397},
+  year={1999},
+  organization={Springer}
+}
+
+@article{coron1962statistics,
+  title={Statistics and Secret Leakage, Financial Cryptography},
+  author={Coron, Jean-S{\'e}bastien and Kocher, Paul C and Naccache, David},
+  journal={Lecture Notes in Computer Science},
+  volume={1962},
+  pages={20--24}
+}
+
+@inproceedings{mayer2000smartly,
+  title={Smartly analyzing the simplicity and the power of simple power analysis on smartcards},
+  author={Mayer-Sommer, Rita},
+  booktitle={International Workshop on Cryptographic Hardware and Embedded Systems},
+  pages={78--92},
+  year={2000},
+  organization={Springer}
+}
+@book{oswald2003side,
+  title={On side-channel attacks and the application of algorithmic countermeasures},
+  author={Oswald, Elisabeth},
+  year={2003},
+  publisher={na}
+}
+@inproceedings{brier2004correlation,
+  title={Correlation power analysis with a leakage model},
+  author={Brier, Eric and Clavier, Christophe and Olivier, Francis},
+  booktitle={International workshop on cryptographic hardware and embedded systems},
+  pages={16--29},
+  year={2004},
+  organization={Springer}
+}
+
+@article{anderson1998serpent,
+  title={Serpent: A proposal for the advanced encryption standard},
+  author={Anderson, Ross and Biham, Eli and Knudsen, Lars},
+  journal={NIST AES Proposal},
+  volume={174},
+  pages={1--23},
+  year={1998}
+}
+
+@misc{AESDescription,
+  title = {{AES} AES Description},
+  howpublished = {\url{https://www.comparitech.com/blog/information-security/what-is-aes-encryption/}},
+}
+
+@misc{FaultAttack,
+  title = {{FaultAttack} FaultAttack Description},
+  howpublished = {\url{https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-5906-5_505}},
+}
+
+@inproceedings{mangard2005successfully,
+  title={Successfully attacking masked AES hardware implementations},
+  author={Mangard, Stefan and Pramstaller, Norbert and Oswald, Elisabeth},
+  booktitle={International Workshop on Cryptographic Hardware and Embedded Systems},
+  pages={157--171},
+  year={2005},
+  organization={Springer}
+}
+
+@inproceedings{mangard2004hardware,
+  title={Hardware countermeasures against DPA--a statistical analysis of their effectiveness},
+  author={Mangard, Stefan},
+  booktitle={Cryptographers’ Track at the RSA Conference},
+  pages={222--235},
+  year={2004},
+  organization={Springer}
+}
+
+@inproceedings{herbst2006aes,
+  title={An AES smart card implementation resistant to power analysis attacks},
+  author={Herbst, Christoph and Oswald, Elisabeth and Mangard, Stefan},
+  booktitle={International conference on applied cryptography and network security},
+  pages={239--253},
+  year={2006},
+  organization={Springer}
+}
+
+@inproceedings{batina2019csi,
+  title={CSI NN: Reverse Engineering of Neural Network Architectures Through Electromagnetic Side Channel},
+  author={Batina, Lejla and Bhasin, Shivam and Jap, Dirmanto and Picek, Stjepan},
+  booktitle={28th USENIX Security Symposium (USENIX Security 19)},
+  pages={515--532},
+  year={2019}
+}
+
+@article{papernot2016transferability,
+  title={Transferability in machine learning: from phenomena to black-box attacks using adversarial samples},
+  author={Papernot, Nicolas and McDaniel, Patrick and Goodfellow, Ian},
+  journal={arXiv preprint arXiv:1605.07277},
+  year={2016}
+}
+
+
+@COMMENT Chapter 8 Sources END
+@misc{TemplateAttack,
+  title = {{TemplateAttack} TemplateAttack Description},
+  howpublished = {\url{https://wiki.newae.com/Template_Attacks}},
+}
+
+
+@misc{WS2,
+  title = {{WS2Dataset} DS2 Dataset},
+  howpublished = {\url{https://catalog.data.gov/dataset/ws2}},
+}
+
+
+@misc{SideChannel,
+  title = {{SideChannel} SideChannelAttack},
+  howpublished = {\url{https://en.wikipedia.org/wiki/Side-channel_attack}},
+}
+
+@article{rivest1978method,
+  title={A method for obtaining digital signatures and public-key cryptosystems},
+  author={Rivest, Ronald L and Shamir, Adi and Adleman, Leonard},
+  journal={Communications of the ACM},
+  volume={21},
+  number={2},
+  pages={120--126},
+  year={1978},
+  publisher={ACM New York, NY, USA}
+}
+
+
+@misc{TimingAttack,
+  title = {{TimingAttack} TimingAttack},
+  howpublished = {\url{https://en.wikipedia.org/wiki/Timing_attack}},
+}
+
+@misc{Montgomery,
+  title = {{MontgomeryModularMultiplication} MontgomeryModularMultiplication},
+  howpublished = {\url{https://en.wikipedia.org/wiki/Montgomery_modular_multiplication}},
+}
 
 @misc{PearsonCorrelationCoefficient,
 howpublished = "\url{https://en.wikipedia.org/wiki/Pearson_correlation_coefficient}"
 }
-
-@COMMENT Chapter 8 Sources END
-
-@COMMENT Chapter 1-Introduction Sources END
-
-@COMMENT Chapter 9 Sources
 
 @misc{GitClementine,
     howpublished = "\url{https://github.com/clementine-m/cache_template_attacks}",
@@ -473,6 +663,35 @@ howpublished = "\url{https://en.wikipedia.org/wiki/Pearson_correlation_coefficie
     howpublished = "Vrije Universiteit Amsterdam",
     note         = "Online; \url{https://cs.vu.nl/~lcr220/ecc/ecc-rh-paper-sp2019-cr.pdf}"
 }
+@MISC {rambleed_paper,
+    author       = "Kwong, Andrew and Genkin, Daniel and Gruss, Daniel and Yarom, Yuval",
+    title        = "RAMBleed: Reading Bits in Memory Without Accessing Them",
+    howpublished = "41st IEEE Symposium on Security and Privacy",
+    note         = "Online; \url{https://rambleed.com/}"
+}
+
+@inproceedings{qiu2019voltjockey,
+  title={Voltjockey: Breaching trustzone by software-controlled voltage manipulation over multi-core frequencies},
+  author={Qiu, Pengfei and Wang, Dongsheng and Lyu, Yongqiang and Qu, Gang},
+  booktitle={Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security},
+  pages={195--209},
+  year={2019}
+}
+
+@inproceedings{tang2017clkscrew,
+  title={$\{$CLKSCREW$\}$: exposing the perils of security-oblivious energy management},
+  author={Tang, Adrian and Sethumadhavan, Simha and Stolfo, Salvatore},
+  booktitle={26th $\{$USENIX$\}$ Security Symposium ($\{$USENIX$\}$ Security 17)},
+  pages={1057--1074},
+  year={2017}
+}
+
+@inproceedings{murdock2020plundervolt,
+  title={Plundervolt: Software-based fault injection attacks against Intel SGX},
+  author={Murdock, Kit and Oswald, David and Garcia, Flavio D and Van Bulck, Jo and Gruss, Daniel and Piessens, Frank},
+  booktitle={2020 IEEE Symposium on Security and Privacy (SP)},
+  year={2020}
+}
 
 @COMMENT Chapter 9 Sources END
 
@@ -517,3 +736,125 @@ howpublished = "\url{https://en.wikipedia.org/wiki/Pearson_correlation_coefficie
 }
 
 @COMMENT Chapter 10 Sources END
+
+@COMMENT Chapter 2 Research Highlights 
+@article{brumley2005remote,
+  title={Remote timing attacks are practical},
+  author={Brumley, David and Boneh, Dan},
+  journal={Computer Networks},
+  volume={48},
+  number={5},
+  pages={701--716},
+  year={2005},
+  publisher={Elsevier}
+}
+
+@inproceedings{song2001timing,
+  title={Timing analysis of keystrokes and timing attacks on ssh.},
+  author={Song, Dawn Xiaodong and Wagner, David A and Tian, Xuqing},
+  booktitle={USENIX Security Symposium},
+  volume={2001},
+  year={2001}
+}
+
+@inproceedings{hund2013practical,
+  title={Practical timing side channel attacks against kernel space ASLR},
+  author={Hund, Ralf and Willems, Carsten and Holz, Thorsten},
+  booktitle={2013 IEEE Symposium on Security and Privacy},
+  pages={191--205},
+  year={2013},
+  organization={IEEE}
+}
+@COMMENT Chapter 4 Sources
+
+@article{gupta1980georg,
+  title={Georg Simon Ohm and Ohm's Law},
+  author={Gupta, Madhu Sudan},
+  journal={IEEE Transactions on Education},
+  volume={23},
+  number={3},
+  pages={156--162},
+  year={1980},
+  publisher={IEEE}
+}
+
+@inproceedings{mangard2002simple,
+  title={A simple power-analysis (SPA) attack on implementations of the AES key expansion},
+  author={Mangard, Stefan},
+  booktitle={International Conference on Information Security and Cryptology},
+  pages={343--358},
+  year={2002},
+  organization={Springer}
+}
+
+@article{shan2017machine,
+  title={Machine learning based side-channel-attack countermeasure with hamming-distance redistribution and its application on advanced encryption standard},
+  author={Shan, Weiwei and Zhang, Shuai and He, Yukun},
+  journal={Electronics Letters},
+  volume={53},
+  number={14},
+  pages={926--928},
+  year={2017},
+  publisher={IET}
+}
+
+@inproceedings{luo2015side,
+  title={Side-channel power analysis of a GPU AES implementation},
+  author={Luo, Chao and Fei, Yunsi and Luo, Pei and Mukherjee, Saoni and Kaeli, David},
+  booktitle={2015 33rd IEEE International Conference on Computer Design (ICCD)},
+  pages={281--288},
+  year={2015},
+  organization={IEEE}
+}
+
+@article{tabansky2012cybercrime,
+  title={Cybercrime: A national security issue?},
+  author={Tabansky, Lior},
+  journal={Military Strategic Affairs},
+  volume={4},
+  number={3},
+  pages={117--136},
+  year={2012}
+}
+
+@article{bonnefon2016social,
+  title={The social dilemma of autonomous vehicles},
+  author={Bonnefon, Jean-Fran{\c{c}}ois and Shariff, Azim and Rahwan, Iyad},
+  journal={Science},
+  volume={352},
+  number={6293},
+  pages={1573--1576},
+  year={2016},
+  publisher={American Association for the Advancement of Science}
+}
+
+@COMMENT Chapter 4 Sources END
+
+
+@COMMENT Chapter 5 Sources START
+
+
+@misc{cryptoeprint:2019:358,
+    author = {Leo Weissbart and Stjepan Picek and Lejla Batina},
+    title = {One trace is all it takes: Machine Learning-based Side-channel Attack on EdDSA},
+    howpublished = {Cryptology ePrint Archive, Report 2019/358},
+    year = {2019},
+    note = {\url{https://eprint.iacr.org/2019/358}},
+}
+
+@article{Bernstein2012,
+  doi = {10.1007/s13389-012-0027-1},
+  url = {https://doi.org/10.1007/s13389-012-0027-1},
+  year = {2012},
+  month = aug,
+  publisher = {Springer Science and Business Media {LLC}},
+  volume = {2},
+  number = {2},
+  pages = {77--89},
+  author = {Daniel J. Bernstein and Niels Duif and Tanja Lange and Peter Schwabe and Bo-Yin Yang},
+  title = {High-speed high-security signatures},
+  journal = {Journal of Cryptographic Engineering}
+}
+
+
+@COMMENT Chapter 5 Sources END
