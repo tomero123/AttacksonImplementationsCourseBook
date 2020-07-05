@@ -715,7 +715,7 @@ The paper then offers a future work where an application can use these methods i
     The second covert channel type is using atomic instruction over two cache lines when no bus lock mechanism exists. The atomicity is achieved by flushing all inflight memory transactions from all cores which will result in observable latency.
     This work had shown how to solve three obstacles when creating a covert channel in the cloud, first memory addressing uncertainty- the sender and the receiver cannot know the exact cache locations of each other because they are located in different virtual environments with different memory mappings. Second process scheduling uncertainty - in classic cache covert channel the receiver runs after the sender (round-robin scheduling), but when the two processes located in different VMS, this scheduling is not guaranteed. Third physical limitation - processes of the receiver and sender may run on different cores and may not share caches L1 and L2.
 
-    \item \textbf{Cross-origin pixel stealing: timing attacks using CSS filters} - In the paper \cite{kotcher2013cross}, the authros present the
+    \item \textbf{Cross-Origin Pixel Stealing: Timing Attacks Using CSS Filters} - In the paper \cite{kotcher2013cross}, the authros present the
     following threat model: the attacker runs a malicious domain. His purpose is to tempt his victim to use the malicious domain. He either creates
     an interesting website to attract the victim to use it for a while,or he is able to open another window in front of the window being attacked.
     \\\\
