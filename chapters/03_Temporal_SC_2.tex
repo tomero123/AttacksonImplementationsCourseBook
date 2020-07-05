@@ -715,4 +715,32 @@ The paper then offers a future work where an application can use these methods i
     The second covert channel type is using atomic instruction over two cache lines when no bus lock mechanism exists. The atomicity is achieved by flushing all inflight memory transactions from all cores which will result in observable latency.
     This work had shown how to solve three obstacles when creating a covert channel in the cloud, first memory addressing uncertainty- the sender and the receiver cannot know the exact cache locations of each other because they are located in different virtual environments with different memory mappings. Second process scheduling uncertainty - in classic cache covert channel the receiver runs after the sender (round-robin scheduling), but when the two processes located in different VMS, this scheduling is not guaranteed. Third physical limitation - processes of the receiver and sender may run on different cores and may not share caches L1 and L2.
 
+    \item \textbf{Cross-origin pixel stealing: timing attacks using CSS filters} - In the paper \cite{kotcher2013cross}, the authros present the
+    following threat model: the attacker runs a malicious domain. His purpose is to tempt his victim to use the malicious domain. He either creates
+    an interesting website to attract the victim to use it for a while,or he is able to open another window in front of the window being attacked.
+    \\\\
+    Hypertext Markup Language (HTML) is the standard markup language for documents designed to be displayed in a web browser. The Document Object Model
+    (DOM) is a cross-platform and language-independent interface that treats an XML or HTML document as a tree structure wherein each node is an object
+    representing a part of the document. It is shown in the paper, how the rendrering process of DOM content makes timing attacks possible: CSS filters
+    allow styling of HTML components, CSS Custom filters (a.k.a shaders) have access to the rendering content, which can hold sensitive information, so
+    an attack on shaders could lead to information leaks. But even without this access, different type of code parts in shaders could enable timing attacks.
+    \begin{enumerate}
+        \item \textbf{Expand a single pixel} - We need to choose which pixels we want to steal, and in each iteration of the attack we need to take only
+        one pixel from the image and enlarge it, to be at the size of the whole screen in order to cancel the noise of all the other pixels and distinguish
+        between only one black and white pixel. Worth mentioning that a method has been found to be able to find the exact character out of 16 digits by
+        measuring the value of only 4 bytes, and in general character set of size $N$ can be read by testing only $log_2(N)$ pixels.
+        \item \textbf{Framing a page} - The attacker frames a website that has neglected to use X-Frame-Options.
+        \item \textbf{The victim visits a malicious page} - The victim visits the attacker’s malicious web page and is tricked into remaining on the page
+        for the duration of the attack, e.g. by an interesting advertisement.
+        \item \textbf{Traversing the page} - Activate a combination of CSS filters over the page to convert each value to be RGB(0,0,0) - black,
+        or RGB(255,255,255) - white.
+        \item \textbf{Average framerate is captured} - Using requestAnimationFrame \cite{requestAnimationFrame} to determine the average framerate on the
+        browser window for each target pixel.
+        \item \textbf{Interpreting the captured data} - An array of pixel measurements are sent to the attacker’s server to be interpreted, The attacker can
+        even build a classifier to determine the  exact results based on the measurements.
+    \end{enumerate}
+    As a result of this attack, and serval similar attacks \cite{stone2013pixel} \cite{andrysco2015subnormal} discovered at the same time, all web browsers had changed their filters implementation to be
+    without color-related optimization and all calculations are supposed to take the exact same time. Despite that, people are always finding new ways
+    to steal pixels through other, creative, ways e.g. floating-point or hardware implementation of the CPU. And so, the fight for security is still ongoing to this day.
+
 \end{itemize}
