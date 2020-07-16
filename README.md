@@ -31,4 +31,9 @@ More information: https://iss.oy.ne.ro/Attacks
 - [Constructing and using a threat model](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=58): Review of the victim assets and the attacker capabilities (19 minutes);
 - [Case studies](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=58): Review examples of attacks  (23 minutes);
 
-Basic reading is the first chapter of the Coursebook; 
+Basic reading is the first chapter of Coursebook; for furthere reading, see the paper about the [TEMPEST](https://cryptome.org/nsa-tempest.pdf); here's Thomas Popp's paper [An Introduction to Implementation Attacks and Countermeasures](https://ieeexplore.ieee.org/document/5185386); there's also an [Overview about Attacks on Smart Cards](https://linkinghub.elsevier.com/retrieve/pii/S1363412703001079);
+
+
+### Lecture 2 
+
+
