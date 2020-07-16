@@ -29,11 +29,17 @@ More information: https://iss.oy.ne.ro/Attacks
 - [Between theory and implementation](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=60): When is a system secure, cryptographocally secure algorithms and protocols, secure architectures  (19 minutes);
 - [Breaking an implementation](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=59): The difference between theory and implementation (11 minutes);
 - [Constructing and using a threat model](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=58): Review of the victim assets and the attacker capabilities (19 minutes);
-- [Case studies](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=58): Review examples of attacks  (23 minutes);
+- [Case studies](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=57): Review examples of attacks  (23 minutes);
 
 Basic reading is the first chapter of Coursebook; for furthere reading, see the paper about the [TEMPEST](https://cryptome.org/nsa-tempest.pdf); here's Thomas Popp's paper [An Introduction to Implementation Attacks and Countermeasures](https://ieeexplore.ieee.org/document/5185386); there's also an [Overview about Attacks on Smart Cards](https://linkinghub.elsevier.com/retrieve/pii/S1363412703001079);
 
 
 ### Lecture 2 
-
+- [Countermeasures and their drawbacks](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=56) (14 minutes);
+- [A history of temporal Side Channel](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=55) (10 minutes);
+- [Definition of Temporal Side Channel](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=54) (6 minutes);
+- [A timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=53) part 1 (15 minutes);
+- [A timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=52) part 2 (23 minutes);
+- [Countermeasures to timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=51): Examples of password checkers. (16 minutes);
+- [Countermeasures to timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=51): Examples of password checkers. (16 minutes);
 
