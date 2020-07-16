@@ -26,7 +26,7 @@ More information: https://iss.oy.ne.ro/Attacks
 - [TEMPEST](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=62) and secure communications, an attack on teletypewriter repeater machine. Part 2 (18 minutes); 
 - [Examples of implementation attacks on other machines](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=63) (11 minutes);
 - [Implementation attcaks on secure devices](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=61)  (9 minutes);
-- [Between theory and implementation](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=60): When is a system secure, cryptographocally secure algorithms and protocols, secure architectures  (19 minutes);
+- [Between theory and implementation](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=60): System security, cryptographocally secure algorithms and protocols, secure architectures  (19 minutes);
 - [Breaking an implementation](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=59): The difference between theory and implementation (11 minutes);
 - [Constructing and using a threat model](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=58): Review of the victim assets and the attacker capabilities (19 minutes);
 - [Case studies](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=57): Review examples of attacks  (23 minutes);
@@ -41,5 +41,6 @@ Basic reading is the first chapter of Coursebook; for furthere reading, see the 
 - [A timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=53) part 1 (15 minutes);
 - [A timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=52) part 2 (23 minutes);
 - [Countermeasures to timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=51): Examples of password checkers. (16 minutes);
-- [Countermeasures to timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=51): Examples of password checkers. (16 minutes);
+- [The Algebra behind RSA](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=50) (16 minutes);
 
+- [Make RSA cheaper via LR and CRT](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=50) (16 minutes);
