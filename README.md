@@ -21,5 +21,6 @@ More information: https://iss.oy.ne.ro/Attacks
 
 # Course materials
 
-### Lecture 1
-- [GitHub](http://github.com)
+### Lecture 1 
+- [Motivation](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=64) and introduction (15 minutes)
+- [Examples of implementation attacks on other machines](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=63) (11 minutes)
