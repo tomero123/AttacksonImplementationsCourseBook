@@ -18,3 +18,4 @@ More information: https://iss.oy.ne.ro/Attacks
 #### Full book Compilation
 - From VSCode: open UniversityCourseBookAOI.tex, click on the "TEX" icon in the left sidebar, run the "Build LaTeX project" command.
 - Without VSCode: run `latexmk` from the root directory of the book repository
+AAAA
