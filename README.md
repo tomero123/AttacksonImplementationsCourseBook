@@ -33,14 +33,16 @@ More information: https://iss.oy.ne.ro/Attacks
 
 Basic reading is the first chapter of Coursebook; for furthere reading, see the paper about the [TEMPEST](https://cryptome.org/nsa-tempest.pdf); here's Thomas Popp's paper [An Introduction to Implementation Attacks and Countermeasures](https://ieeexplore.ieee.org/document/5185386); there's also an [Overview about Attacks on Smart Cards](https://linkinghub.elsevier.com/retrieve/pii/S1363412703001079);
 
-
 ### Lecture 2 
 - [Countermeasures and their drawbacks](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=56) (14 minutes);
 - [A history of temporal Side Channel](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=55) (10 minutes);
-- [Definition of Temporal Side Channel](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=54) (6 minutes);
+- [The definition of Temporal Side Channel](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=54) (6 minutes);
 - [A timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=53) part 1 (15 minutes);
 - [A timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=52) part 2 (23 minutes);
 - [Countermeasures to timing attack on passwords](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=51): Examples of password checkers. (16 minutes);
 - [The Algebra behind RSA](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=50) (16 minutes);
 
-- [Make RSA cheaper via LR and CRT](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=50) (16 minutes);
+- [Make RSA more efficient via LR and CRT](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=50) (18 minutes);
+
+### Lecture 3
+- [Countermeasures and their drawbacks](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=56) (14 minutes);
