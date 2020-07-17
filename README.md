@@ -23,7 +23,7 @@ More information: https://iss.oy.ne.ro/Attacks
 
 ### Lecture 1 
 - [TEMPEST](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=64) and secure communications, an attack on teletypewriter repeater machine. Part 1 (15 minutes);
-- [TEMPEST](https://www.youtube.com/watch?v=m7FYn4XMONE&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=62) and secure communications, an attack on teletypewriter repeater machine. Part 2 (18 minutes); 
+- [TEMPEST](https://youtu.be/lQzzB87ADYA) and secure communications, an attack on teletypewriter repeater machine. Part 2 (18 minutes); 
 - [Examples of implementation attacks on other machines](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=63) (11 minutes);
 - [Implementation attcaks on secure devices](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=61)  (9 minutes);
 - [Between theory and implementation](https://www.youtube.com/watch?v=lQzzB87ADYA&list=UUKK5uxRGT-0Jtq1bGAg7XkQ&index=60): System security, cryptographocally secure algorithms and protocols, secure architectures  (19 minutes);
