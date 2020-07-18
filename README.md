@@ -58,8 +58,8 @@ Basic reading is the second chapter of Coursebook; for additional background rea
 Basic reading is the 3rd chapter of our Coursebook. It starts with a recap and then introduces efficient implementations of modular exponentiations as described in Chapter 14 of [The Handbook of Apploed Cryptography](https://doi.org/10.1201/9781439821916); To read about a cheaper way for modular multiplication, you can learn about the [Chinese Remainder Theorem](https://books.google.co.il/books?id=RQLtCgAAQBAJ&lpg=PR5&ots=l13HVwsuKW&dq=Chinese%20remainder%20theorem%3A%20applications%20in%20computing%2C%20coding%2C%20cryptography&lr&hl=iw&pg=PR5#v=onepage&q=Chinese%20remainder%20theorem:%20applications%20in%20computing,%20coding,%20cryptography&f=false); You can also read the 1998 paper ["A Practical Implementation of the Timing Attack"](https://link.springer.com/chapter/10.1007%2F10721064_15) that proposes improvements to Kosher's idea that when the running time of a cryptographic algorithm is non-constant, timing measurements can leak information about the secret key; Then it discusses the Vaizata method, and it's recommended you brush up on [T-Tests](https://en.wikipedia.org/wiki/Student%27s_t-test), developed by Guinness head brewer, [William Sealey Gosset](https://en.wikipedia.org/wiki/William_Sealy_Gosset);
 
 ### Lecture 4 - Power-EM Side Channels I
-- [Basic electric circuit and Ohm's Law](https://youtu.be/KNHn61t1Bmg) - A brief overview/refresh for Ohm's Law(20 minutes);
-- [Open and Short Circuits](https://youtu.be/8cvmVmwj0QY) - An overview on short circuits and open circuits(14 minutes);
+- [Basic electric circuit and Ohm's Law](https://youtu.be/KNHn61t1Bmg) - A brief overview/refresh for Ohm's Law (20 minutes);
+- [Open and Short Circuits](https://youtu.be/8cvmVmwj0QY) - An overview on short circuits and open circuits (14 minutes);
 - [Introdcution to transistors(and other electronic components)](https://youtu.be/6W9VeMXTERI) (15 minutes);
 - [Sequential circuits based on FET](https://youtu.be/CNa20b0UpBk)(10 minutes);
 - [Computational circuit based on FET - CMOS](https://youtu.be/7YJUMdPCXFA) - Demonstrating combinational circuits and logic gates (17 minutes);
@@ -72,9 +72,9 @@ Basic reading is chapter 4 of the Coursebook, that starts off with an introducti
 
 ### Lecture 5 - Power-EM Side Channels II
 - [The New York Times 1998 - Paul Kocher](https://youtu.be/rC6mYV5f1cw) - Revisiting an attack from the 1995 on Smart Cards(10 minutes);
-- [MC, ASIC & FPGA](https://youtu.be/lE3S2Nm3L2o)(10 minutes);
-- [Simple power analysis of RSA](https://youtu.be/dTCsycglAxg)(13 minutes);
-- [Simple Power Analysis Main idea](https://youtu.be/PDWMQ-3It0g)(17 minutes);
+- [MC, ASIC & FPGA](https://youtu.be/lE3S2Nm3L2o) (10 minutes);
+- [Simple power analysis of RSA](https://youtu.be/dTCsycglAxg) (13 minutes);
+- [Simple Power Analysis Main idea](https://youtu.be/PDWMQ-3It0g) (17 minutes);
 - [Basic MC - Virgulator](https://youtu.be/L13p5dFl2P0)(17 minutes) - Introducing the [Virgulator](http://tice.sea.eseo.fr/riscv/) - a Javascript-implemented micro controller simulator;
 - [The history of AES](https://youtu.be/emBHqbA27u4)(17 minutes);
 - [AES - Main theme](https://youtu.be/OTvMCIzht8U) - Exploring the AES/Rijndael encryption standard, it's strengths and steps. (23 minutes);
@@ -91,31 +91,31 @@ The basic reading is Chapter 5 of the coursebook, from 5.10 The Advanced Encrypt
 ### Guest Lecture [Part 1] - Stjepan Picek - CSI NN: Reverse Engineering of Neural Network Architectures Through Electromagnetic Side Channel
 - [CSI NN(Reverse NN via EM) - part 1](https://youtu.be/9gQlJZKCTrg) - An intro about how timing attacks can be used for reverse engineering machine learning modules to obtain sensitive information about the invloved datasets (20 minutes);
 - [CSI NN(Reverse NN via EM) - part 2](https://youtu.be/Mn6J7LqWdWo) - Exploring which information is required to execute such attacks, and which operations in the model are targeted (22 minutes);
-- [CSI NN(Reverse NN via EM) - part 3](https://youtu.be/Vr7KXwLXUbA) - Delving into the reverse engineering process on a Neural Network(9 minutes);
+- [CSI NN(Reverse NN via EM) - part 3](https://youtu.be/Vr7KXwLXUbA) - Delving into the reverse engineering process on a Neural Network (9 minutes);
 - [CSI NN(Reverse NN via EM) - part 4](https://youtu.be/zf9bZDUKq90) - Examining results of attacks (16 minutes);
 
 
 ### Guest Lecture [Part 2] - Stjepan Picek - Machine Learning and Implementation Attacks
 - [SCA via Deep Learning - part 1](https://youtu.be/XyXqInBYae4) - Discussing different types of profiled attacks and Neural Network architecure (19 minutes);
-- [SCA via Deep Learning - part 2](https://youtu.be/hWFG1TnAqWM)(16 minutes);
+- [SCA via Deep Learning - part 2](https://youtu.be/hWFG1TnAqWM) (16 minutes);
 
 
 ### Lecture 7 - High Data Complexity Attacks Power-EM I
 - [Recap - Attacks on AES](https://youtu.be/iWwzi1rqzYg) - A recap of RSA and AES attacks (13 minutes);
 - [Recap - Attacks on RSA](https://youtu.be/kp4gv4icZ_c) - A recap of RSA and AES attacks (15 minutes)
-- [High data complexity Attacks](https://youtu.be/RqC5hJnRo8k) - Discussing the main idea of high data complexity attacks (DPA/CPA)(15 minutes);
-- [DPA With Vaizata](https://youtu.be/sFQJfKHsWxY) - Revisiting the Vaizata method and how to use it with DPA(13 minutes);
-- [DPA With Vaizata On AES - Matlab(part 1)](https://youtu.be/cVl9su9Q6Lg) - Demonstrating Vaizata with DPA on Matlab(16 minutes);
+- [High data complexity Attacks](https://youtu.be/RqC5hJnRo8k) - Discussing the main idea of high data complexity attacks (DPA/CPA) (15 minutes);
+- [DPA With Vaizata](https://youtu.be/sFQJfKHsWxY) - Revisiting the Vaizata method and how to use it with DPA (13 minutes);
+- [DPA With Vaizata On AES - Matlab(part 1)](https://youtu.be/cVl9su9Q6Lg) - Demonstrating Vaizata with DPA on Matlab (16 minutes);
 - [DPA With Vaizata On AES](https://youtu.be/8A4VLm0Dfh0) - Vaizata with DPA demo - Examining the results (12 minutes);
 - [DPA With Vaizata On AES - Matlab(part 2)](https://youtu.be/TXESGYUDAWA) (19 minutes);
-- [DPA With Vaizata On AES](https://youtu.be/XLnRHlx7vlk)(18 minutes);
+- [DPA With Vaizata On AES](https://youtu.be/XLnRHlx7vlk) (18 minutes);
 
 Basic reading is Chapters 7 and 8 of the Coursebook; Whereas, chapter 5 mainly focused on low data complexity attacks (with few traces), chapter 7 focuses on high data complexity attacks, aka DPA and CPA (many, many traces). It revisits the Vaizata method and how it can be used for high data complexity attacks, similarly to timing attacks (this time the assumption is that the power consumption is depended on the key). At 7.2 we demonstrate an attack on AES using example data from the [Power Analysis Attacks book](https://link.springer.com/book/10.1007/978-0-387-38162-6) and visualize the process.
 
 ### Lecture 8 - Micro-Architectural Side Channels
-- [Prime & Probe Cache Attack](https://youtu.be/t4jxgga4XIQ) - An explanation of the Prime & Probe cache attack(9 minutes);
-- [Spectre - Toy Example](https://youtu.be/h-CEHjEkIm8) - Discussing the Spectre vulnerability(9 minutes);
-- [From Prime & Probe To Spectre](https://youtu.be/cQ2-toh-kr0) - Demonstrating Spectre vulnerability using the Virgulator emulator(11 minutes);
+- [Prime & Probe Cache Attack](https://youtu.be/t4jxgga4XIQ) - An explanation of the Prime & Probe cache attack (9 minutes);
+- [Spectre - Toy Example](https://youtu.be/h-CEHjEkIm8) - Discussing the Spectre vulnerability (9 minutes);
+- [From Prime & Probe To Spectre](https://youtu.be/cQ2-toh-kr0) - Demonstrating Spectre vulnerability using the Virgulator emulator (11 minutes);
 - [Defining Micro-Architectural Attacks](https://youtu.be/dFnHC6OH2H4) - Discussing Micro-Architecture attacks between processes (19 minutes);
 - [The Cache - Hierarchy and Structure](https://youtu.be/NJEgH9jgifA) - Discussing the need for caches, their structure, mapping policy and hierarachy and (20 minutes);
 
