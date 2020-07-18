@@ -71,12 +71,12 @@ Basic reading is chapter 4 of the Coursebook, that starts off with an introducti
 
 
 ### Lecture 5 - Power-EM Side Channels II
-- [The New York Times 1998 - Paul Kocher](https://youtu.be/rC6mYV5f1cw) - Revisiting an attack from the 1995 on Smart Cards(10 minutes);
+- [The New York Times 1998 - Paul Kocher](https://youtu.be/rC6mYV5f1cw) - Revisiting an attack from the 1995 on Smart Cards (10 minutes);
 - [MC, ASIC & FPGA](https://youtu.be/lE3S2Nm3L2o) (10 minutes);
 - [Simple power analysis of RSA](https://youtu.be/dTCsycglAxg) (13 minutes);
 - [Simple Power Analysis Main idea](https://youtu.be/PDWMQ-3It0g) (17 minutes);
-- [Basic MC - Virgulator](https://youtu.be/L13p5dFl2P0)(17 minutes) - Introducing the [Virgulator](http://tice.sea.eseo.fr/riscv/) - a Javascript-implemented micro controller simulator;
-- [The history of AES](https://youtu.be/emBHqbA27u4)(17 minutes);
+- [Basic MC - Virgulator](https://youtu.be/L13p5dFl2P0) (17 minutes) - Introducing the [Virgulator](http://tice.sea.eseo.fr/riscv/) - a Javascript-implemented micro controller simulator;
+- [The history of AES](https://youtu.be/emBHqbA27u4) (17 minutes);
 - [AES - Main theme](https://youtu.be/OTvMCIzht8U) - Exploring the AES/Rijndael encryption standard, it's strengths and steps. (23 minutes);
 
 The basic reading is Chapter 5 of the Coursebook up to around 5.12 "AES Internals"; It starts by Kocher's 1995 smart card power analysis attack that made it to the front page of The New York Times. It then further explores Power Analysis side channel Attacks, simple power analysis, low and high data complexity attacks (sub-classes of power analysis attacks) and the types of devices commonly targeted by such attacks ([microcontrollers](https://en.wikipedia.org/wiki/Microcontroller) and [ASIC](https://en.wikipedia.org/wiki/Application-specific_integrated_circuit)), [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard_process) power analysis attack.
