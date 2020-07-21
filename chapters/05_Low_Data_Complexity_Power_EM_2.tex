@@ -1265,5 +1265,27 @@ solver will fail. what can we do in this case? We try again.
     The results show that the CNN based method has a 100\% accuracy of identifying the correct ephemeral key nibble given a trace from the attack set, whereas the SVM and Random Forest methods show a slighly lower accuracy and the template attack lags behind them all. As a consequence, the CNN based method is able to iteratively recover the entire 256bit ephemeral key using just a single guess of each of its 64 nibbles and the private scalar can be computed from the ephemeral key and the respective signed message using a straightforward mathematical formula, thus giving an attack the ability to forge message signatures.
     Another important result is that as few as 500 training traces are sufficient to reach the 100\% accuracy with the CNN based attack.
 
+    
+    \item   \textbf{Current Events: Identifying Webpages by Tapping the Electrical Outlet}\newline
+    
+    Computers plugged into power outlets leak information by drawing variable amounts of power when performing different tasks. 
+    This work examines the extent to which this side channel leaks private information about web browsing.
+    Characterizing the AC power side channel may help lead to practical countermeasures that protect user privacy from untrusted power infrastructure.
+    Web browsers increasingly take advantage of hardware acceleration to implement rich user interfaces. In practice, several challenges complicate the task of identifying webpages:
+    \begin{itemize}
+        \item Competing websites often imitate one another, resulting in similar resource-use patterns.
+        \item Most websites optimize for load time, so many popular webpages load in approximately the same amount of time.
+        \item A complex software stack sits between a webpage and the power supply, introducing layers of indirection that may buffer or hide fine-grained events.
+        \item Many websites change frequently, often presenting different content (e.g., ads) to different users.
+      \end{itemize}
+
+      This paper experimentally demonstrates that, despite the above challenges, 
+      different webpages do induce different power-consumption patterns that can be used to 
+      identify them.\newline 
+      To do so, they used a Fourier transform of the power traces to represent
+      the entire trace in the frequency domain.
+      Then, they built an SVM classifier to distinguish between 50 different webpages and showed it 
+      can acheive 87\% precision and 74\% recall.
+
 
     \end{itemize}
